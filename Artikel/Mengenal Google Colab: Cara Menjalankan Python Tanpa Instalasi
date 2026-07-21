@@ -1,0 +1,60 @@
+Mengenal Google Colab: Cara Menjalankan Python Tanpa Instalasi
+📘 Apa yang Akan Dipelajari?
+Pada artikel ini kamu akan belajar:
+•	Mengenal apa itu Google Colab.
+•	Menjalankan Python langsung dari browser.
+•	Membuat Notebook pertama.
+•	Menulis dan menjalankan kode Python.
+•	Menyimpan hasil pekerjaan ke Google Drive
+💡Mengapa Memilih Google Colab
+Google Colab menjadi pilihan banyak programmer dan data analyst karena seluruh proses berjalan di cloud sehingga tidak perlu menginstal Python maupun Jupyter Notebook di komputer.
+
+Keunggulan Google Colab:
+✔ Gratis digunakan.
+✔ Terintegrasi dengan Google Drive.
+✔ Mendukung Python versi terbaru.
+✔ Bisa digunakan di Windows, Linux maupun macOS.
+✔ Mendukung GPU dan TPU untuk Machine Learning.
+⚠️ Sebelum Memulai
+Pastikan kamu telah memiliki:
+•	Akun Google aktif.
+•	Browser seperti Google Chrome atau Microsoft Edge.
+•	Koneksi internet yang stabil.
+Tanpa akun Google kamu tidak dapat membuat maupun menyimpan notebook di Google Colab.
+💻Mulai menggunakan Google 
+Colab
+Langkah 1 — Membuka Google Colab
+ 
+Buka browser kemudian kunjungi situs https://colab.research.google.com. Pastikan Anda sudah login menggunakan akun Google agar notebook dapat disimpan secara otomatis.
+Langkah 2 — Membuat Notebook Baru
+ 
+Setelah berhasil masuk ke Google Colab, klik File → New Notebook untuk membuat notebook baru. Notebook merupakan tempat kita menulis dan menjalankan kode Python.
+Langkah 3 — Mengenal Tampilan Notebook
+ 
+Tampilan notebook terdiri dari area penulisan kode (Code Cell), menu utama, dan tombol Run untuk menjalankan program.
+Langkah 4 — Menulis Program Pertama
+Ketik kode Python di dalam Code Cell.
+print("Halo Dunia!")
+ 
+Setelah menekan tombol Run, Google Colab akan menampilkan output:
+Halo Dunia!
+ 
+Langkah 5 — Penyimpanan Otomatis
+Notebook yang dibuat dapat disimpan secara otomatis di Google Drive sehingga dapat diakses kembali kapan saja.
+ 
+❌ Kesalahan yang Sering 
+Dilakukan Pemula
+Beberapa kesalahan yang sering ditemui saat pertama menggunakan Google Colab:
+•	Belum login ke akun Google.
+•	Menutup tab sebelum notebook tersimpan.
+•	Salah menulis sintaks Python.
+•	Tidak menjalankan kode menggunakan tombol Run atau Shift + Enter.
+⭐ Tips Produktivitas
+Gunakan shortcut berikut agar bekerja lebih cepat:
+•	Shift + Enter → Menjalankan kode.
+•	Ctrl + M B → Menambah Code Cell.
+•	Ctrl + M D → Menghapus Cell.
+•	Simpan notebook langsung ke Google Drive agar pekerjaan tidak hilang.
+🎯 Kesimpulan
+Google Colab merupakan solusi praktis untuk menjalankan Python tanpa instalasi. Dengan memanfaatkan layanan berbasis cloud dari Google, pengguna dapat langsung menulis, menjalankan, dan menyimpan kode Python hanya melalui browser. Hal ini menjadikan Google Colab sebagai platform yang sangat cocok bagi pemula yang ingin belajar pemrograman maupun analisis data.
+
