@@ -1,142 +1,64 @@
-# PKL Infrastructure Portfolio
-## Day 3 - Debian 13 Base Setup & DNS Server Preparation
+# Daily Report - Day 3
 
-### 📅 Tanggal
-22 Juli 2026
+**Tanggal:** 22 Juli 2026
 
-## 📖 Deskripsi
+## Ringkasan
 
-Pada hari ketiga proyek PKL dilakukan proses persiapan environment Linux menggunakan Debian 13 sebagai server utama. Tahapan yang dilakukan meliputi konfigurasi jaringan, aktivasi akses remote menggunakan SSH, pembaruan sistem operasi, serta instalasi layanan DNS Server (BIND9) sebagai dasar untuk pembelajaran SysAdmin.
+Melakukan persiapan environment Debian 13 sebagai server utama untuk kegiatan PKL. Fokus pekerjaan hari ini adalah konfigurasi jaringan, pembaruan sistem, aktivasi akses remote, serta instalasi layanan DNS Server sebagai persiapan proyek berikutnya.
 
 ---
 
-## 🎯 Tujuan
-
-- Menyiapkan virtual machine Debian 13 sebagai server utama.
-- Menghubungkan server ke internet menggunakan NAT.
-- Menghubungkan server dengan host menggunakan Host-Only Adapter.
-- Mengaktifkan akses remote menggunakan SSH.
-- Memperbarui sistem Debian ke versi paket terbaru.
-- Menginstal layanan DNS Server menggunakan BIND9.
-- Memastikan layanan DNS berjalan dengan baik.
-
----
-
-## 🛠️ Environment
-
-| Komponen | Keterangan |
-|----------|------------|
-| Operating System | Debian GNU/Linux 13 (Trixie) |
-| Virtualization | Oracle VirtualBox |
-| SSH Client | PuTTY |
-| Network Adapter | NAT + Host-Only Adapter |
-
----
-
-## 📌 Kegiatan
+## Aktivitas
 
 ### 1. Konfigurasi Network
-
-- Menggunakan Adapter NAT sebagai akses internet.
-- Menggunakan Host-Only Adapter sebagai komunikasi antara host dan virtual machine.
-- Melakukan troubleshooting konfigurasi routing.
-- Memperbaiki konflik default gateway sehingga koneksi internet dapat digunakan.
-
----
+- Mengonfigurasi VirtualBox menggunakan NAT dan Host-Only Adapter.
+- Melakukan troubleshooting routing dan default gateway.
+- Memastikan koneksi internet berjalan dengan baik.
 
 ### 2. Pengujian Konektivitas
-
-Melakukan pengujian koneksi menggunakan:
-
-- ping gateway
-- ping host
-- ping internet
-
-Hasil:
-
-- ✅ Host-Only berjalan dengan baik
-- ✅ NAT berhasil terhubung ke internet
-- ✅ Routing telah berfungsi dengan normal
-
----
+- Menguji koneksi ke gateway.
+- Menguji koneksi ke host.
+- Menguji koneksi ke internet menggunakan `ping`.
 
 ### 3. Konfigurasi SSH
-
-- Memastikan service OpenSSH berjalan.
-- Melakukan remote server menggunakan PuTTY.
-- Verifikasi akses remote berhasil.
-
----
+- Memastikan layanan OpenSSH berjalan.
+- Melakukan pengujian remote server menggunakan PuTTY.
 
 ### 4. System Update
-
-Melakukan pembaruan sistem menggunakan:
-
-```bash
-apt update
-apt full-upgrade
-```
-
-Selama proses upgrade dilakukan konfigurasi ulang GRUB Boot Loader pada virtual disk.
-
----
+- Melakukan pembaruan sistem menggunakan `apt update` dan `apt full-upgrade`.
+- Menyelesaikan konfigurasi GRUB setelah proses upgrade.
 
 ### 5. Instalasi DNS Server
-
-Menginstal paket:
-
-```bash
-apt install bind9 bind9-utils bind9-doc dnsutils
-```
-
-Melakukan verifikasi service:
-
-```bash
-systemctl status bind9
-```
-
-Hasil:
-
-- ✅ Service berjalan (active)
-- ✅ DNS mendengarkan pada port 53
+- Menginstal paket:
+  - bind9
+  - bind9-utils
+  - bind9-doc
+  - dnsutils
+- Memastikan service BIND9 berjalan dengan baik.
+- Melakukan pengecekan port DNS (53).
 
 ---
 
-## 📊 Hasil
+## Kendala
+
+- Terjadi konflik default gateway yang menyebabkan server tidak dapat mengakses internet.
+- Permasalahan berhasil diidentifikasi dan diselesaikan dengan menghapus default gateway pada interface Host-Only.
+
+---
+
+## Hasil
 
 - Debian 13 berhasil dikonfigurasi.
-- Konfigurasi jaringan berhasil diperbaiki.
-- Internet dapat diakses.
-- SSH dapat digunakan melalui PuTTY.
+- Koneksi internet telah berfungsi normal.
+- SSH dapat diakses menggunakan PuTTY.
 - Sistem berhasil diperbarui.
-- BIND9 berhasil diinstal.
-- DNS Server aktif dan siap dikonfigurasi pada tahap berikutnya.
+- BIND9 berhasil diinstal dan berjalan dengan status **active (running)**.
 
 ---
 
-## 📚 Materi yang Dipelajari
+## Rencana Selanjutnya
 
-- Konfigurasi jaringan Linux
-- Routing
-- NAT
-- Host-Only Adapter
-- SSH Server
-- Linux Package Management
-- GRUB
-- BIND9 DNS Server
-
----
-
-## 🚀 Progress Selanjutnya
-
-Tahapan berikutnya yang akan dikerjakan:
-
-- Konfigurasi `named.conf.options`
-- Pembuatan Forward Zone
-- Pembuatan Reverse Zone
-- Pengujian DNS menggunakan `dig`
-- Pengujian DNS menggunakan `nslookup`
-- Dokumentasi konfigurasi DNS
-
----
-
+- Melakukan konfigurasi DNS Server (BIND9).
+- Membuat Forward Zone dan Reverse Zone.
+- Melakukan pengujian DNS menggunakan `dig` dan `nslookup`.
+- Menyusun dokumentasi proyek DNS Server.
