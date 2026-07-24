@@ -1,40 +1,247 @@
-LAPORAN HARIAN PKL
-Day 5 - Output 2
-Implementasi PHP-FPM dan Integrasi dengan Nginx
+# MariaDB Database Server
 
-Hari/Tanggal : Jumat, 24 Juli 2026
+MariaDB Database Server installation and configuration on Debian 13.
 
-Output : PHP-FPM Integration
+This project is part of my Infrastructure Portfolio developed during my Industrial Internship (PKL).
 
-Uraian Kegiatan
+---
 
-Setelah Database Server berhasil diimplementasikan, kegiatan dilanjutkan dengan instalasi PHP 8.4 beserta PHP-FPM (FastCGI Process Manager) pada Debian 13. PHP digunakan sebagai bahasa pemrograman server-side untuk membangun website dinamis, sedangkan PHP-FPM berfungsi sebagai penghubung antara web server Nginx dengan interpreter PHP.
+# Overview
 
-Tahap pertama dilakukan instalasi paket PHP beserta beberapa modul pendukung seperti php-mysql, php-cli, php-curl, php-mbstring, php-xml, dan php-zip. Setelah proses instalasi selesai, dilakukan pengecekan versi PHP serta memastikan service php8.4-fpm berjalan dengan normal.
+The purpose of this project is to build a relational database server that will later be used by a dynamic PHP website.
 
-Selanjutnya dilakukan konfigurasi pada web server Nginx dengan mengaktifkan pemrosesan file PHP menggunakan Unix Socket php8.4-fpm.sock. Setelah konfigurasi selesai, dilakukan pengujian konfigurasi Nginx menggunakan perintah nginx -t untuk memastikan tidak terdapat kesalahan konfigurasi sebelum service dijalankan kembali.
+The database stores project information and certificates displayed on the portfolio website.
 
-Sebagai pengujian, dibuat file info.php yang berisi fungsi phpinfo() untuk memastikan bahwa Nginx berhasil meneruskan request ke PHP-FPM. Setelah halaman PHP berhasil ditampilkan melalui browser, dilakukan pengujian koneksi ke database dengan membuat file database.php menggunakan fungsi mysqli_connect(). Pengujian berhasil menunjukkan bahwa PHP dapat melakukan koneksi ke database MariaDB dengan baik.
+---
 
-Hasil yang Dicapai
-PHP 8.4 berhasil diinstal.
-PHP-FPM berhasil diinstal dan dijalankan.
-Nginx berhasil dikonfigurasi untuk memproses file PHP.
-Halaman phpinfo() berhasil ditampilkan melalui browser.
-PHP berhasil melakukan koneksi ke database MariaDB.
-Infrastruktur web telah siap dikembangkan menjadi website dinamis.
-Kendala
+# Technology
 
-Saat melakukan pengujian konfigurasi Nginx menggunakan perintah nginx -t, muncul pesan kesalahan:
+- Debian 13
+- MariaDB
+- SQL
 
-fastcgi_pass directive is duplicate
+---
 
-Kesalahan tersebut disebabkan karena terdapat dua directive fastcgi_pass pada blok konfigurasi PHP di dalam file konfigurasi Nginx.
+# Features
 
-Solusi
+- MariaDB Installation
+- Database Creation
+- User Management
+- Privilege Management
+- Table Creation
+- Data Manipulation
+- Database Connection for PHP
 
-Dilakukan pengecekan terhadap file konfigurasi Nginx dan ditemukan bahwa masih terdapat konfigurasi fastcgi_pass 127.0.0.1:9000 yang aktif bersamaan dengan konfigurasi Unix Socket php8.4-fpm.sock. Konfigurasi yang tidak digunakan kemudian dihapus sehingga hanya tersisa satu directive fastcgi_pass. Setelah dilakukan pengujian ulang menggunakan nginx -t, konfigurasi dinyatakan valid dan service Nginx berhasil dijalankan kembali.
+---
 
-Kesimpulan
+# Installation
 
-Implementasi PHP-FPM berhasil dilakukan dengan baik. Integrasi antara Nginx, PHP-FPM, dan MariaDB telah berjalan sesuai harapan sehingga server telah siap digunakan untuk mengembangkan website portofolio dinamis berbasis PHP yang terhubung langsung dengan database MariaDB. Dengan selesainya tahap ini, infrastruktur server yang dibangun telah mencakup DNS Server, Web Server, Database Server, serta PHP Application Layer yang saling terintegrasi.
+## Update Repository
+
+```bash
+sudo apt update
+```
+
+---
+
+## Install MariaDB
+
+```bash
+sudo apt install mariadb-server -y
+```
+
+---
+
+## Enable Service
+
+```bash
+sudo systemctl enable mariadb
+
+sudo systemctl start mariadb
+```
+
+---
+
+## Check Service
+
+```bash
+sudo systemctl status mariadb
+```
+
+---
+
+## Secure Installation
+
+```bash
+sudo mysql_secure_installation
+```
+
+Configuration used:
+
+- Remove anonymous users : Yes
+- Disallow root login remotely : Yes
+- Remove test database : Yes
+- Reload privilege tables : Yes
+
+---
+
+# Database Configuration
+
+Login into MariaDB.
+
+```bash
+sudo mysql
+```
+
+Create Database.
+
+```sql
+CREATE DATABASE portfolio_db;
+```
+
+---
+
+## Create User
+
+```sql
+CREATE USER 'webuser'@'localhost'
+IDENTIFIED BY 'Password123!';
+```
+
+---
+
+## Grant Privileges
+
+```sql
+GRANT ALL PRIVILEGES
+ON portfolio_db.*
+TO 'webuser'@'localhost';
+
+FLUSH PRIVILEGES;
+```
+
+---
+
+# Tables
+
+## projects
+
+```sql
+CREATE TABLE projects(
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+project_name VARCHAR(100),
+
+category VARCHAR(100),
+
+technology VARCHAR(200),
+
+status VARCHAR(50),
+
+description TEXT,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+```
+
+---
+
+## certificates
+
+```sql
+CREATE TABLE certificates(
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+certificate_name VARCHAR(150),
+
+issuer VARCHAR(100),
+
+category VARCHAR(100),
+
+issue_date DATE,
+
+verification_url VARCHAR(255),
+
+image VARCHAR(255)
+
+);
+```
+
+---
+
+# Sample Data
+
+```sql
+INSERT INTO projects
+(project_name,category,technology,status,description)
+VALUES
+(
+'DNS Server',
+'Infrastructure',
+'Debian 13, BIND9',
+'Completed',
+'Local DNS Server using BIND9.'
+);
+```
+
+---
+
+# Database Structure
+
+```
+portfolio_db
+│
+├── projects
+│
+└── certificates
+```
+
+---
+
+# Verification
+
+Show databases.
+
+```sql
+SHOW DATABASES;
+```
+
+Show tables.
+
+```sql
+SHOW TABLES;
+```
+
+Display projects.
+
+```sql
+SELECT * FROM projects;
+```
+
+Display certificates.
+
+```sql
+SELECT * FROM certificates;
+```
+
+---
+
+# Future Development
+
+- phpMyAdmin
+- Backup & Restore
+- Database Replication
+- Docker MariaDB
+
+---
+
+# Author
+
+Maulana Aldi Pradana
+
+SMK Negeri 2 Surakarta
+
+Infrastructure Portfolio
