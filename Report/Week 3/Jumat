@@ -1,0 +1,58 @@
+# Daily Report - Day 05
+
+**Week:** 02  
+**Day:** 05  
+**Topic:** Weekly Mini Project
+
+---
+
+## Objective
+
+Summarize all activities completed during Week 02 and present the initial findings through a professional presentation.
+
+---
+
+## Activities
+
+- Organized the presentation structure.
+- Summarized dataset information.
+- Explained the dataset source and selection process.
+- Presented the dataset structure.
+- Highlighted important variables.
+- Discussed analysis opportunities and dataset limitations.
+- Prepared the presentation script.
+
+---
+
+## Deliverables
+
+- Weekly-Mini-Project.pptx
+- Weekly-Mini-Project.pdf
+- presentation-script.md
+
+---
+
+## Results
+
+A complete presentation was created to summarize the entire Week 02 learning process, including Dataset Discovery, Data Dictionary, Data Understanding, and Dataset Summary.
+
+---
+
+## Skills Acquired
+
+- Technical Presentation
+- Data Storytelling
+- Communication Skills
+- Documentation
+
+---
+
+## Weekly Reflection
+
+During this week, I learned the fundamental stages of a Data Analysis workflow, including dataset selection, variable documentation, initial data exploration using Pandas, and data quality assessment. These activities established a strong foundation for the next stage of the project, which focuses on Data Cleaning.
+
+---
+
+## Next Steps
+
+Continue to Week 03 by performing Data Cleaning, including data type conversion, duplicate handling, consistency checks, and preparing the dataset for Exploratory Data Analysis (EDA).
