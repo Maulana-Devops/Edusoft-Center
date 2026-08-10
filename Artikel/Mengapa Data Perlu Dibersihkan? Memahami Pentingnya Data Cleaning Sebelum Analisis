@@ -118,17 +118,3 @@ Pada artikel berikutnya, kita akan mempelajari lebih dalam mengenai struktur dat
 #Edusoft
 #AnalisisData
 #Pemula
-________________________________________
-Dokumentasi yang Disarankan
-Untuk artikel ini, saya menyarankan dokumentasi berikut:
-1.	Featured Image (800×800 px) bertema Data Cleaning.
-2.	Screenshot Google Colab saat membuat DataFrame.
-3.	Screenshot output dataset yang memiliki data bermasalah.
-4.	Screenshot menjalankan print(data.info()).
-5.	Screenshot menjalankan print(data.describe()).
-6.	Screenshot mini praktik beserta outputnya.
-________________________________________
-Catatan Editor
-Saya sengaja belum mengajarkan cara memperbaiki data (dropna(), fillna(), drop_duplicates()) pada artikel ini. Fokusnya adalah membangun pemahaman tentang mengapa data perlu dibersihkan. Dengan demikian, artikel minggu ke-4 dapat menjadi kelanjutan yang alami, misalnya membahas cara mengenali struktur dataset dan kualitas data atau mulai masuk ke teknik dasar pemeriksaan dataset menggunakan Pandas. Ini membuat seluruh seri artikel memiliki alur belajar yang konsisten dan tidak terasa meloncat.
-
-
