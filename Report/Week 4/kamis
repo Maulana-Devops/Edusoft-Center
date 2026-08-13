@@ -1,0 +1,220 @@
+Tentu. Berikut rangkuman kegiatan hari ini yang bisa langsung kamu gunakan sebagai laporan/jurnal PKL atau dokumentasi GitHub.
+
+````md
+# Daily Learning Journal - 13 Agustus 2026
+
+## Kegiatan Hari Ini
+
+Hari ini kegiatan berfokus pada penyelesaian dokumentasi Project 10 dan mulai mengerjakan Project 9 mengenai data cleaning menggunakan OpenRefine.
+
+---
+
+## 1. Penyelesaian Project 10 - SQL HAVING
+
+Pada awal kegiatan, saya menyelesaikan dokumentasi Project 10 yang membahas penggunaan `HAVING` dalam SQL.
+
+Materi yang dipraktikkan meliputi:
+
+- `GROUP BY`
+- Fungsi agregasi `SUM()`
+- `HAVING`
+- `WHERE`
+- `INNER JOIN`
+- `JOIN ... ON`
+- Perhitungan total sales
+- Filtering hasil agregasi
+
+Pada Quiz 1, dilakukan pengelompokan data berdasarkan `orderNumber` dan perhitungan:
+
+```text
+itemscount = SUM(quantityOrdered)
+total = SUM(quantityOrdered * priceEach)
+````
+
+Kemudian digunakan `HAVING` untuk memfilter:
+
+```text
+total sales > 1000
+```
+
+dan:
+
+```text
+total sales > 1000
+itemscount > 600
+```
+
+Pada Quiz 2, dilakukan penggabungan tabel `orders` dan `orderdetails` menggunakan `INNER JOIN`. Data kemudian difilter berdasarkan status `Shipped` menggunakan `WHERE`, sedangkan total sales lebih dari `1500` difilter menggunakan `HAVING`.
+
+Struktur Project 10 yang telah diselesaikan:
+
+```text
+Project-10/
+├── image/
+│   ├── quiz-1.1.png
+│   ├── quiz-1.2.png
+│   ├── quiz-1.3.png
+│   └── quiz-2.png
+│
+└── queries.sql
+```
+
+Dokumentasi `README.md` juga telah dibuat untuk menjelaskan tujuan project, query, konsep SQL yang digunakan, hasil pembelajaran, dan struktur file.
+
+---
+
+## 2. Mempelajari Project 9 - Data Cleaning dengan OpenRefine
+
+Setelah Project 10 selesai, kegiatan dilanjutkan ke Project 9 berdasarkan materi `Basis Data Part9`.
+
+Project 9 menggunakan OpenRefine untuk melakukan proses cleaning terhadap data.
+
+Materi menjelaskan beberapa teknik utama:
+
+* Import dataset CSV
+* Text Facet
+* Trim leading and trailing whitespace
+* To Titlecase
+* Cluster and Edit
+* Manual editing
+* Export data menjadi CSV
+
+Dataset yang digunakan adalah:
+
+```text
+sample-file.csv
+```
+
+Dataset tersebut kemudian berhasil di-import ke OpenRefine sebagai project baru.
+
+---
+
+## 3. Pemeriksaan Data dengan Text Facet
+
+Setelah dataset berhasil di-import, dilakukan pemeriksaan terhadap kolom:
+
+```text
+Name of person presenting
+```
+
+Menggunakan:
+
+```text
+Facet → Text Facet
+```
+
+Ditemukan beberapa variasi nama yang tidak konsisten.
+
+Contohnya:
+
+```text
+Alex Castillo
+Alex Castillo
+Alex Castillooooooooooooooo
+Alexander
+Alexander Castillo
+Alexander Castillo
+```
+
+OpenRefine memperlakukan variasi tersebut sebagai nilai yang berbeda sehingga perlu dilakukan proses cleaning.
+
+---
+
+## 4. Membersihkan Whitespace
+
+Langkah berikutnya adalah membersihkan spasi yang tidak diperlukan menggunakan:
+
+```text
+Edit cells
+→ Common transformations
+→ Trim leading and trailing whitespace
+```
+
+Setelah proses ini dilakukan, jumlah pilihan nama berkurang dari:
+
+```text
+121 choices
+```
+
+menjadi:
+
+```text
+113 choices
+```
+
+Hal tersebut menunjukkan bahwa terdapat beberapa nilai yang sebelumnya berbeda hanya karena adanya whitespace.
+
+---
+
+## 5. Mengubah Format Nama
+
+Setelah whitespace dibersihkan, dilakukan standardisasi format penulisan nama menggunakan:
+
+```text
+Edit cells
+→ Common transformations
+→ To titlecase
+```
+
+Transformasi ini digunakan untuk membuat format penulisan nama menjadi lebih konsisten.
+
+Contohnya:
+
+```text
+alex castillo
+ALEX CASTILLO
+alex CASTILLO
+```
+
+dapat distandarkan menjadi:
+
+```text
+Alex Castillo
+```
+
+Pada proses ini tercatat sebanyak 31 cells mengalami transformasi.
+
+---
+
+## 6. Status Project 9
+
+Sampai akhir kegiatan hari ini, proses Project 9 telah mencapai tahap:
+
+```text
+Import Dataset
+      ↓
+Text Facet
+      ↓
+Trim Whitespace
+      ↓
+To Titlecase
+      ↓
+Cluster & Edit ← tahap berikutnya
+```
+
+Tahap berikutnya adalah menggunakan fitur `Cluster` pada kolom `Name of person presenting`.
+
+Cluster akan digunakan untuk menemukan variasi nama yang kemungkinan merujuk pada orang yang sama, kemudian menggabungkannya secara hati-hati menggunakan fitur:
+
+```text
+Merge Selected & Recluster
+```
+
+Proses penggabungan akan dilakukan setelah memeriksa hasil cluster agar tidak menggabungkan nama dari orang yang berbeda.
+
+---
+
+## Kesimpulan
+
+Kegiatan hari ini memberikan pengalaman pada dua bagian utama pengolahan data.
+
+Pada Project 10, saya mempraktikkan analisis data menggunakan SQL dengan kombinasi `GROUP BY`, fungsi agregasi, `HAVING`, `WHERE`, dan `INNER JOIN`.
+
+Pada Project 9, saya mulai mempraktikkan data cleaning menggunakan OpenRefine, khususnya dalam menemukan data yang tidak konsisten, membersihkan whitespace, dan melakukan standardisasi format teks.
+
+Kegiatan selanjutnya akan melanjutkan proses `Cluster & Edit` pada Project 9 hingga dataset selesai dibersihkan dan dapat diekspor kembali dalam format CSV.
+
+```
+
+Untuk progres hari ini, posisi kita sekarang adalah **Project 10 selesai** dan **Project 9 sudah sampai tahap sebelum Cluster & Edit**.
+```
