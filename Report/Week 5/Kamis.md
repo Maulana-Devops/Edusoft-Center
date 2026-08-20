@@ -33,7 +33,23 @@ Pada Sprint 2, pengembangan berfokus pada penyempurnaan engine pengumpul metrik,
   * **Bar Chart:** Komparasi penggunaan resource CPU vs RAM.
   * **Doughnut Chart:** Distribusi tipe insiden (`ANOMALY`, `CONTAINER_DOWN`, `CONTAINER_UP`).
 * **Auto-Polling:** Pembaruan data otomatis setiap 3 detik tanpa butuh *refresh* halaman manual.
-* **Responsive Layout:** Tampilan antarmuka modern berbasi Tailwind CSS & FontAwesome.
+* **Responsive Layout:** Tampilan antarmuka modern berbasis Tailwind CSS & FontAwesome.
+
+### 4. Container Remote Control Panel & Real-time Action Triggers
+* **Docker Engine SDK Integration:** Pengontrolan kontainer secara langsung melalui web dashboard menggunakan API Docker SDK (`/var/run/docker.sock`).
+* **Interactive Control Actions:**
+  * **Start:** Menjalankan kontainer yang berstatus `EXITED` langsung dari tabel dashboard.
+  * **Restart:** Melakukan pemulihan (*reboot*) cepat pada kontainer yang bermasalah.
+  * **Stop / Down:** Menghentikan kontainer yang sedang berjalan (*running*).
+* **Accurate Active Container Counting:** Optimasi logika penghitungan kontainer pada kartu statistik *Active Containers* agar hanya memproses kontainer dengan status `RUNNING` (menghapus opsi `all=True` pada pengumpulan metrik ringkasan).
+
+### 5. Dynamic Incident Logging & Precision Telegram Alerts
+* **In-Memory & Persistent Forensic Logger:** Integrasi fungsi `log_incident()` dinamis. Setiap aksi interaktif kontainer (*Start*, *Restart*, *Stop*) secara otomatis diinjeksi ke daftar *Forensic Incident Logs & Anomalies* terbaru di sisi teratas tabel.
+* **Telegram Bot Integration:** Pengiriman notifikasi darurat secara otomatis ke Telegram Admin saat terjadi insiden atau aksi berkategori `HIGH` Severity.
+* **Timestamp Hardening (WIB):** Standarisasi penanganan zona waktu pada payload Telegram dan *event log* menggunakan konversi `astimezone(pytz.timezone('Asia/Jakarta'))` untuk menjamin presisi waktu lokal 100% pas.
+
+### 6. Template Engine & Architecture Bug Fixes
+* **Jinja2 Path Resolution:** Penyelesaian masalah `jinja2.exceptions.TemplateNotFound` melalui pemetaan *absolute path* dinamis (`TEMPLATE_DIR` dan `STATIC_DIR`) berbasis `os.path.abspath(__file__)` pada `backend/api.py`.
 
 ---
 
@@ -43,8 +59,11 @@ Pada Sprint 2, pengembangan berfokus pada penyempurnaan engine pengumpul metrik,
 | :--- | :--- | :--- | :--- |
 | **Systemd Service** | `systemctl status smart-monitor smart-api` | Kedua service berstatus `active (running)` | **PASSED** |
 | **Container Up Event** | `docker run -d --name test-nginx nginx:alpine` | Count kontainer bertambah, event `CONTAINER_UP` tercatat di log | **PASSED** |
-| **Container Down Event**| `docker stop test-nginx` | Status berubah ke `CRITICAL ANOMALIES`, event `CONTAINER_DOWN` tercatat di log | **PASSED** |
-| **Timezone Accuracy** | Verifikasi jam log vs UI | Jam log forensik cocok dengan `Grogol Time` (WIB) | **PASSED** |
+| **Container Down Event** | `docker stop test-nginx` | Status berubah ke `CRITICAL ANOMALIES`, event `CONTAINER_DOWN` tercatat di log | **PASSED** |
+| **Timezone Accuracy** | Verifikasi jam log vs UI & Telegram | Jam log forensik dan alert Telegram cocok dengan WIB (Asia/Jakarta) | **PASSED** |
+| **Container Control Action** | Klik tombol **Start / Restart / Stop** pada dashboard | Kontainer di server merespons, log insiden bertambah, dan Telegram alert terkirim | **PASSED** |
+| **Active Count Precision** | Menghentikan 1 kontainer dari 5 kontainer aktif | Kartu *Active Containers* berkurang menjadi 4, sementara daftar kontainer tetap menampilkan status `EXITED` | **PASSED** |
+| **Flask Route Stability** | Menjalankan API dari direktori apa saja (`/root` atau `/backend`) | Halaman `dashboard.html` ter-render sempurna tanpa error Jinja2 | **PASSED** |
 
 ---
 
@@ -53,15 +72,16 @@ Pada Sprint 2, pengembangan berfokus pada penyempurnaan engine pengumpul metrik,
 ```text
 smart-monitor/
 ├── backend/
-│   ├── api.py               # Flask REST API + CORS Enabled
+│   ├── api.py               # Flask REST API, Jinja Path Fix, Docker Control & Telegram Alert
 │   ├── collector.py         # Docker & System Metrics Collector
 │   └── main.py              # Anomaly Detection & Monitoring Engine
 ├── frontend/
+│   ├── static/              # Dashboard Assets & CSS/JS Libraries
 │   └── templates/
-│       └── dashboard.html   # Real-time Chart.js Dashboard
+│       └── dashboard.html   # Real-time Chart.js & Remote Control Panel
 ├── logs/
 │   ├── current_status.json  # Real-time System Metrics
-│   └── incident_log.json    # Forensic Incident Logs
+│   └── incident_log.json    # Persistent Forensic Incident Logs
 └── /etc/systemd/system/
     ├── smart-api.service    # API Daemon
     └── smart-monitor.service# Collector Daemon
