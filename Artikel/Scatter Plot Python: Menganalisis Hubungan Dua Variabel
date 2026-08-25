@@ -1,0 +1,368 @@
+# Scatter Plot Python: Menganalisis Hubungan Dua Variabel
+
+Setelah data dibersihkan dan distribusinya diperiksa, tahap berikutnya dalam Exploratory Data Analysis (EDA) adalah melihat apakah terdapat hubungan antara dua variabel. Misalnya, apakah siswa yang belajar lebih lama cenderung memperoleh nilai yang lebih tinggi? Salah satu cara sederhana untuk melihat pola tersebut adalah menggunakan scatter plot Python.
+
+Pada artikel ini, kita akan menggunakan dataset sederhana untuk membuat scatter plot, membaca pola yang muncul, dan menarik insight awal dari hubungan dua variabel.
+
+## 📘 Apa yang Akan Dipelajari?
+
+Pada artikel ini kamu akan mempelajari:
+
+* Apa yang dimaksud dengan hubungan antarvariabel.
+* Apa itu scatter plot.
+* Cara membuat scatter plot menggunakan Python dan Matplotlib.
+* Cara membaca pola pada scatter plot.
+* Mengenali hubungan positif, negatif, dan hubungan yang tidak jelas.
+* Cara menulis insight sederhana berdasarkan visualisasi.
+* Mengapa hubungan antarvariabel tidak selalu berarti sebab-akibat.
+
+## 💡 Mengapa Perlu Menganalisis Hubungan Antarvariabel?
+
+Dalam analisis data, terkadang kita tidak hanya ingin mengetahui bagaimana satu variabel tersebar. Kita juga ingin mengetahui apakah perubahan pada suatu variabel memiliki pola tertentu terhadap variabel lainnya.
+
+Sebagai contoh, seorang guru memiliki data jumlah jam belajar dan nilai ujian beberapa siswa. Guru tersebut ingin mengetahui apakah terdapat kecenderungan bahwa siswa yang belajar lebih lama memperoleh nilai yang lebih tinggi.
+
+Jika hanya melihat tabel angka, pola tersebut mungkin sulit terlihat. Dengan visualisasi, hubungan antarvariabel dapat dilihat dengan lebih mudah.
+
+Pada artikel sebelumnya, kita telah membahas bagaimana distribusi data dapat diperiksa menggunakan visualisasi. Jika kamu ingin memahami kembali tahap pemeriksaan dan pembersihan dataset, kamu dapat membaca artikel [Data Cleaning dengan Pandas] terlebih dahulu.
+
+## 🎯 Studi Kasus: Jam Belajar dan Nilai Ujian
+
+Pada praktik kali ini, kita menggunakan data sederhana yang berisi dua variabel:
+
+* `Jam_Belajar` → jumlah jam belajar siswa.
+* `Nilai` → nilai ujian yang diperoleh siswa.
+
+Pertanyaan yang ingin kita jawab adalah:
+
+> Apakah siswa yang memiliki lebih banyak jam belajar cenderung memperoleh nilai yang lebih tinggi?
+
+Pertanyaan tersebut menjadi dasar analisis kita.
+
+Dalam proses Data Analysis, menentukan pertanyaan sebelum membuat visualisasi penting dilakukan agar grafik yang dibuat memiliki tujuan yang jelas.
+
+## ⚠️ Sebelum Memulai
+
+Sebelum mengikuti praktik, pastikan kamu telah memiliki:
+
+* Akun Google untuk menggunakan Google Colab.
+* Browser dan koneksi internet.
+* Pemahaman dasar Python.
+* Pemahaman dasar Pandas.
+* Pengetahuan dasar mengenai DataFrame.
+
+Jika masih belum mengenal Google Colab, kamu dapat membaca artikel [Mengenal Google Colab: Cara Menjalankan Python Tanpa Instalasi] terlebih dahulu.
+
+## 📊 Apa Itu Scatter Plot?
+
+Scatter plot adalah jenis grafik yang digunakan untuk melihat hubungan antara dua variabel numerik.
+
+Setiap titik pada grafik mewakili satu observasi atau satu baris data. Posisi titik ditentukan berdasarkan nilai dari dua variabel yang digunakan.
+
+Sebagai contoh:
+
+* Sumbu X → Jam Belajar.
+* Sumbu Y → Nilai.
+
+Dengan begitu, setiap titik menunjukkan hubungan antara jumlah jam belajar dan nilai seorang siswa.
+
+Scatter plot sangat berguna pada tahap awal EDA karena membantu kita melihat pola secara visual sebelum melakukan analisis statistik lebih lanjut.
+
+## 💻 Menyiapkan Dataset
+
+Langkah pertama adalah membuat dataset sederhana menggunakan Pandas.
+
+```python
+import pandas as pd
+
+data = pd.DataFrame({
+    "Jam_Belajar": [1, 2, 2, 3, 3, 4, 4, 5, 5, 6],
+    "Nilai": [55, 60, 65, 68, 72, 75, 78, 82, 85, 90]
+})
+
+print(data)
+```
+
+Kode tersebut membuat sebuah DataFrame dengan dua kolom, yaitu `Jam_Belajar` dan `Nilai`.
+
+Output yang dihasilkan:
+
+```text
+   Jam_Belajar  Nilai
+0            1     55
+1            2     60
+2            2     65
+3            3     68
+4            3     72
+5            4     75
+6            4     78
+7            5     82
+8            5     85
+9            6     90
+```
+
+📸 Dokumentasi 1 — Screenshot kode dan output dataset pada Google Colab.
+
+Dari tabel tersebut terlihat bahwa data terdiri dari 10 observasi. Setiap baris mewakili satu siswa.
+
+## 📈 Membuat Scatter Plot dengan Python
+
+Setelah dataset tersedia, kita dapat membuat scatter plot menggunakan Matplotlib.
+
+```python
+import matplotlib.pyplot as plt
+
+plt.scatter(data["Jam_Belajar"], data["Nilai"])
+
+plt.title("Hubungan Jam Belajar dan Nilai")
+plt.xlabel("Jam Belajar")
+plt.ylabel("Nilai")
+
+plt.show()
+```
+
+Fungsi `plt.scatter()` digunakan untuk membuat scatter plot.
+
+Sementara itu:
+
+* `plt.title()` memberikan judul grafik.
+* `plt.xlabel()` memberikan nama pada sumbu X.
+* `plt.ylabel()` memberikan nama pada sumbu Y.
+* `plt.show()` menampilkan grafik.
+
+📸 Dokumentasi 2 — Screenshot kode pembuatan scatter plot di Google Colab.
+
+Setelah kode dijalankan, Google Colab akan menampilkan grafik yang menunjukkan posisi setiap data berdasarkan jumlah jam belajar dan nilai ujian.
+
+📸 Dokumentasi 3 — Screenshot hasil scatter plot.
+
+## 🔍 Bagaimana Membaca Scatter Plot?
+
+Setelah grafik dibuat, jangan berhenti pada tahap "grafik berhasil dibuat". Tahap berikutnya adalah membaca pola yang muncul.
+
+Pada contoh kita, titik-titik data cenderung bergerak dari bagian kiri bawah menuju kanan atas.
+
+Artinya, ketika jumlah jam belajar meningkat, nilai pada dataset tersebut juga cenderung meningkat.
+
+Dari kondisi tersebut, kita dapat mengatakan bahwa terdapat kecenderungan hubungan positif antara `Jam_Belajar` dan `Nilai`.
+
+Namun, perlu diperhatikan bahwa kesimpulan tersebut hanya berdasarkan pola pada dataset yang digunakan.
+
+## 📈 Mengenal Hubungan Positif
+
+Hubungan positif terjadi ketika peningkatan suatu variabel cenderung diikuti oleh peningkatan variabel lainnya.
+
+Contohnya pada dataset kita:
+
+```text
+Jam Belajar meningkat
+        ↓
+Nilai cenderung meningkat
+```
+
+Jika titik-titik pada scatter plot cenderung bergerak dari kiri bawah menuju kanan atas, pola tersebut dapat menunjukkan hubungan positif.
+
+Pada data kita, siswa dengan jam belajar lebih tinggi cenderung memiliki nilai yang lebih tinggi.
+
+Namun, hubungan tersebut belum cukup untuk membuktikan bahwa jam belajar merupakan satu-satunya faktor yang menyebabkan peningkatan nilai.
+
+## 📉 Mengenal Hubungan Negatif
+
+Kondisi berbeda terjadi pada hubungan negatif.
+
+Hubungan negatif terjadi ketika peningkatan suatu variabel cenderung diikuti oleh penurunan variabel lainnya.
+
+Contoh sederhana:
+
+```text
+Kecepatan kendaraan meningkat
+        ↓
+Waktu perjalanan cenderung menurun
+```
+
+Pada scatter plot, pola hubungan negatif umumnya terlihat seperti kumpulan titik yang bergerak dari kiri atas menuju kanan bawah.
+
+## 🔀 Ketika Tidak Ada Pola yang Jelas
+
+Tidak semua data memiliki hubungan yang mudah terlihat.
+
+Jika titik-titik pada scatter plot tersebar tanpa pola tertentu, kita mungkin tidak dapat melihat kecenderungan hubungan yang jelas antara kedua variabel.
+
+Contohnya, jika kita membandingkan nomor sepatu dengan nilai ujian siswa, belum tentu terdapat pola yang berarti.
+
+Dalam kondisi seperti ini, kita tidak boleh memaksakan kesimpulan hanya karena ingin menemukan hubungan.
+
+## ⚠️ Hubungan Tidak Selalu Berarti Sebab-Akibat
+
+Ini merupakan salah satu hal penting dalam membaca hasil analisis data.
+
+Misalnya, dari dataset kita terlihat:
+
+> Jam belajar meningkat dan nilai juga meningkat.
+
+Kita tidak boleh langsung mengatakan:
+
+> "Jam belajar menyebabkan nilai meningkat."
+
+Kesimpulan tersebut terlalu jauh jika hanya didasarkan pada scatter plot.
+
+Masih terdapat berbagai faktor lain yang mungkin memengaruhi nilai, seperti:
+
+* metode belajar;
+* kemampuan awal siswa;
+* tingkat kesulitan soal;
+* kualitas pembelajaran;
+* kondisi siswa;
+* waktu istirahat;
+* dan faktor lainnya.
+
+Karena itu, kesimpulan yang lebih tepat adalah:
+
+> "Pada dataset yang dianalisis terdapat kecenderungan hubungan positif antara jumlah jam belajar dan nilai ujian."
+
+Perbedaan kalimat tersebut terlihat sederhana, tetapi penting dalam Data Analysis karena kita harus membedakan antara hubungan (association) dan sebab-akibat (causation).
+
+## 🧪 Mini Praktik
+
+Sekarang coba gunakan dataset berikut.
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.DataFrame({
+    "Jam_Belajar": [1, 2, 2, 3, 4, 4, 5, 6],
+    "Nilai": [50, 55, 60, 65, 70, 73, 80, 88]
+})
+
+plt.scatter(data["Jam_Belajar"], data["Nilai"])
+
+plt.title("Hubungan Jam Belajar dan Nilai")
+plt.xlabel("Jam Belajar")
+plt.ylabel("Nilai")
+
+plt.show()
+```
+
+Setelah grafik muncul, coba jawab beberapa pertanyaan berikut:
+
+1. Apakah titik-titik menunjukkan pola tertentu?
+2. Apakah hubungan terlihat positif, negatif, atau tidak jelas?
+3. Apa insight yang dapat ditulis berdasarkan grafik tersebut?
+
+📸 Dokumentasi 4 — Screenshot kode mini praktik.
+
+📸 Dokumentasi 5 — Screenshot hasil scatter plot mini praktik.
+
+Salah satu insight yang dapat ditulis dari contoh tersebut adalah:
+
+> "Pada dataset mini, nilai cenderung meningkat seiring bertambahnya jumlah jam belajar sehingga terlihat adanya hubungan positif antara kedua variabel."
+
+## 💼 Penerapan dalam Dunia Kerja
+
+Scatter plot tidak hanya digunakan untuk contoh data siswa. Dalam pekerjaan Data Analyst, visualisasi ini dapat digunakan untuk berbagai kebutuhan.
+
+Misalnya sebuah toko ingin mengetahui apakah terdapat hubungan antara biaya iklan dan jumlah penjualan.
+
+Variabel yang digunakan:
+
+```text
+Biaya Iklan → Penjualan
+```
+
+Dengan scatter plot, analis dapat melihat apakah peningkatan biaya iklan pada dataset tertentu diikuti oleh peningkatan penjualan.
+
+Contoh lainnya:
+
+```text
+Harga Produk → Jumlah Penjualan
+Jam Kerja → Jumlah Produksi
+Pengalaman Kerja → Pendapatan
+Suhu → Konsumsi Listrik
+```
+
+Namun, prinsipnya tetap sama: scatter plot digunakan sebagai langkah awal untuk melihat pola, bukan sebagai bukti tunggal bahwa satu variabel menyebabkan variabel lainnya.
+
+## ❌ Kesalahan yang Sering Dilakukan Pemula
+
+Beberapa kesalahan yang perlu dihindari ketika menggunakan scatter plot antara lain:
+
+1. Membuat grafik tanpa menentukan pertanyaan yang ingin dijawab.
+
+2. Menganggap hubungan positif sebagai bukti sebab-akibat.
+
+3. Tidak memberikan label pada sumbu X dan Y.
+
+4. Menggunakan variabel yang tidak relevan.
+
+5. Menarik kesimpulan hanya berdasarkan satu atau dua titik data.
+
+6. Mengabaikan kualitas dataset sebelum melakukan visualisasi.
+
+7. Menganggap semua scatter plot harus membentuk garis lurus.
+
+Visualisasi merupakan alat untuk membantu memahami data. Kualitas kesimpulan tetap bergantung pada kualitas data dan cara kita melakukan analisis.
+
+## ⭐ Tips dan Best Practice
+
+Beberapa kebiasaan yang dapat diterapkan ketika membuat scatter plot:
+
+* Tentukan pertanyaan analisis sebelum membuat grafik.
+* Pastikan kedua variabel merupakan data yang sesuai untuk dibandingkan.
+* Berikan judul dan label sumbu yang jelas.
+* Gunakan dataset yang sudah diperiksa kualitasnya.
+* Perhatikan pola keseluruhan, bukan hanya beberapa titik.
+* Jangan langsung menganggap hubungan sebagai sebab-akibat.
+* Jika membutuhkan pengukuran yang lebih objektif, lanjutkan dengan analisis korelasi.
+* Dokumentasikan insight yang diperoleh dari setiap visualisasi.
+
+Dengan kebiasaan tersebut, grafik tidak hanya menjadi gambar pendukung, tetapi menjadi bagian dari proses analisis.
+
+## 📊 Dari Visualisasi Menuju Korelasi
+
+Scatter plot memberikan gambaran visual mengenai hubungan dua variabel. Namun, terkadang kita membutuhkan angka untuk mengetahui seberapa kuat hubungan tersebut.
+
+Misalnya kita ingin menjawab:
+
+> "Seberapa kuat hubungan antara jam belajar dan nilai?"
+
+Pertanyaan tersebut tidak cukup dijawab hanya dengan melihat grafik. Kita dapat melanjutkan analisis menggunakan koefisien korelasi.
+
+Korelasi akan menjadi pembahasan berikutnya karena merupakan langkah lanjutan setelah kita memahami hubungan antarvariabel secara visual.
+
+## 🎯 Kesimpulan
+
+Scatter plot merupakan salah satu visualisasi sederhana yang sangat berguna dalam Exploratory Data Analysis. Dengan menempatkan dua variabel pada sumbu X dan Y, kita dapat melihat apakah terdapat pola hubungan di antara keduanya.
+
+Pada studi kasus jam belajar dan nilai, scatter plot menunjukkan kecenderungan hubungan positif karena nilai pada dataset cenderung meningkat ketika jumlah jam belajar bertambah.
+
+Namun, visualisasi tersebut tidak cukup untuk membuktikan hubungan sebab-akibat. Oleh karena itu, hasil scatter plot sebaiknya digunakan sebagai langkah awal sebelum melanjutkan analisis yang lebih mendalam.
+
+Dengan memahami cara membaca scatter plot, kita dapat mulai berpindah dari sekadar melihat data menjadi mencari pola dan menghasilkan insight dari data.
+
+## 📚 Referensi
+
+* Dokumentasi resmi Python dan Matplotlib digunakan sebagai referensi dalam praktik visualisasi.
+* Dataset pada artikel ini merupakan dataset latihan yang dibuat untuk kebutuhan pembelajaran.
+
+## ✍️ Penulis
+
+Ditulis oleh Maulana Aldi Pradana.
+
+Lihat portofolio dan dokumentasi proyek lainnya melalui profil portofolio industri penulis.
+
+[Link Portfolio Industri]
+
+---
+
+### Catatan dokumentasi
+
+Untuk artikel ini, saya sarankan minimal menggunakan 5 screenshot:
+
+1. Dataset pada Google Colab.
+2. Kode pembuatan scatter plot.
+3. Hasil scatter plot utama.
+4. Kode mini praktik.
+5. Hasil mini praktik.
+
+Untuk screenshot artikel, gunakan ukuran maksimal 900 pixel sesuai aturan Edusoft. Featured image tetap menggunakan ukuran 800 × 800 pixel.
