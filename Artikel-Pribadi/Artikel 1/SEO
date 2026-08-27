@@ -1,0 +1,389 @@
+Bisa. Untuk **Artikel #1**, saya pisahkan SEO-nya menjadi satu blok khusus agar nanti mudah kamu simpan sebagai bagian dari file artikel atau dokumen `SEO_ARTICLE_01.md`.
+
+# SEO — Artikel #1
+
+## 1. Search Intent
+
+**Primary search intent:** Informational
+
+Target pertanyaan:
+
+> **How does a network packet travel from one host to another?**
+
+Tujuan pembaca setelah membaca artikel:
+
+* memahami perjalanan packet
+* memahami hubungan IP dan MAC
+* memahami fungsi ARP
+* memahami peran switch
+* memahami default gateway
+* memahami peran router
+* melihat praktiknya melalui Cisco Packet Tracer
+
+---
+
+## 2. H1 / Article Title
+
+```text
+Understanding Computer Networks: How a Packet Travels from One Host to Another
+```
+
+**Catatan:** Ini adalah judul artikel, bukan field SEO title Hashnode.
+
+---
+
+## 3. SEO Title
+
+Hashnode membatasi **60 karakter**.
+
+Gunakan:
+
+```text
+How a Network Packet Travels Between Two Hosts
+```
+
+Panjang: **47 karakter**.
+
+Ini menjadi judul yang lebih ringkas untuk search result.
+
+---
+
+## 4. URL / Slug
+
+```text
+understanding-network-packet-flow
+```
+
+Hasil:
+
+```text
+/understanding-network-packet-flow
+```
+
+### Rules
+
+* lowercase
+* menggunakan hyphen
+* pendek
+* deskriptif
+* tidak menggunakan tanggal
+* tidak menggunakan angka yang tidak diperlukan
+
+---
+
+## 5. Meta Description
+
+Hashnode meminta maksimal **150 karakter**.
+
+Gunakan:
+
+```text
+Learn how a network packet travels between two hosts using IP, ARP, MAC addresses, switches, routers, and ICMP.
+```
+
+Panjang: **115 karakter**.
+
+---
+
+# 6. Primary Keyword
+
+```text
+network packet flow
+```
+
+### Search concept
+
+```text
+network packet flow
+packet flow between hosts
+how network packets travel
+```
+
+Jangan memaksakan exact keyword berulang kali.
+
+---
+
+# 7. Secondary Keywords
+
+Gunakan secara natural dalam pembahasan:
+
+```text
+computer networking
+network packet
+IP address
+MAC address
+ARP
+Ethernet
+network switch
+router
+default gateway
+ICMP
+Cisco Packet Tracer
+```
+
+Tidak perlu semua keyword muncul berkali-kali.
+
+---
+
+# 8. Semantic Entities
+
+Konsep/entity yang harus jelas dalam artikel:
+
+```text
+Host
+IP address
+MAC address
+ARP
+Ethernet frame
+Network switch
+Default gateway
+Router
+Routing table
+ICMP
+Cisco Packet Tracer
+```
+
+Ini penting untuk **semantic SEO dan GEO**, karena artikel tidak hanya bergantung pada satu keyword.
+
+---
+
+# 9. SEO Heading Structure
+
+```markdown
+# Understanding Computer Networks: How a Packet Travels from One Host to Another
+
+## Introduction
+
+## Why This Matters
+
+## The Network Topology
+
+## 1. Host: Where Communication Begins
+
+## 2. IP Address: Identifying the Destination
+
+## 3. ARP: Resolving an IPv4 Address to a MAC Address
+
+## 4. Switch: Forwarding Ethernet Frames
+
+## 5. Default Gateway: The Path Out of the Local Network
+
+## 6. Router: Connecting Different IP Networks
+
+## 7. Following a Ping from PC-A to PC-B
+
+## 8. Observing the Packet Flow
+
+## 9. Troubleshooting Perspective
+
+## What I Learned
+
+## Conclusion
+
+## Frequently Asked Questions
+
+### What is a network packet?
+
+### What is the difference between an IP address and a MAC address?
+
+### What does a switch do?
+
+### What does a router do?
+
+### What is a default gateway?
+
+### Why is ARP needed?
+
+## What's Next?
+```
+
+---
+
+# 10. GEO / AEO Opening
+
+Di bagian awal artikel, gunakan jawaban langsung seperti:
+
+```markdown
+> **In short:** a host uses its IP configuration to determine where traffic should go, ARP can resolve a local IPv4 address to a MAC address, switches forward Ethernet frames, and routers forward packets between different IP networks.
+```
+
+Tujuannya:
+
+**Pertanyaan → jawaban langsung → penjelasan mendalam.**
+
+Ini lebih baik untuk pembaca dan juga membuat informasi lebih mudah dipahami oleh answer engine.
+
+---
+
+# 11. FAQ untuk GEO
+
+Gunakan pertanyaan yang benar-benar mungkin dicari pembaca.
+
+### What is a network packet?
+
+Jawab secara langsung dalam 1–3 kalimat, kemudian beri penjelasan jika diperlukan.
+
+### What is the difference between an IP address and a MAC address?
+
+Jelaskan:
+
+```text
+IP → logical addressing
+MAC → link-layer addressing
+```
+
+### What does a switch do?
+
+```text
+A switch forwards Ethernet frames based on MAC addresses.
+```
+
+### What does a router do?
+
+```text
+A router forwards packets between different IP networks.
+```
+
+### What is a default gateway?
+
+Jelaskan fungsi gateway ketika destination berada di network berbeda.
+
+### Why is ARP needed?
+
+Jelaskan hubungan:
+
+```text
+IPv4 address
+↓
+ARP
+↓
+MAC address
+```
+
+---
+
+# 12. Image SEO
+
+Untuk screenshot praktik:
+
+### Alt text
+
+Jangan:
+
+```text
+screenshot 1
+```
+
+Gunakan deskripsi:
+
+```text
+Cisco Packet Tracer topology showing two PCs connected through two switches and a router
+```
+
+Untuk routing table:
+
+```text
+Cisco router routing table showing connected network routes
+```
+
+Untuk ping:
+
+```text
+Successful ICMP ping from PC-A to PC-B in Cisco Packet Tracer
+```
+
+### Caption
+
+Format:
+
+```text
+Figure 1 — Cisco Packet Tracer topology used to demonstrate packet flow between two hosts.
+```
+
+**Alt text dan caption jangan harus identik.**
+
+---
+
+# 13. Internal Linking
+
+Artikel #1 nantinya menjadi bagian awal topic cluster.
+
+Untuk sekarang:
+
+```markdown
+## What's Next?
+
+In the next article, I will explore IPv4 addressing and subnetting,
+including how network and host portions are determined.
+```
+
+Setelah Artikel #2 diterbitkan, bagian ini diperbarui menjadi link.
+
+Dan Artikel #2 juga harus mengarah kembali ke Artikel #1 jika relevan.
+
+---
+
+# 14. OG / Social Image
+
+Gunakan template Canva yang sudah kita buat.
+
+**Template:**
+
+[TJKT Article #1 — Network Packet Flow](https://www.canva.com/d/Nuq1lkD-phG_qFL?utm_source=chatgpt.com)
+
+Konsep visual:
+
+```text
+TJKT • NETWORKING
+
+HOW A NETWORK PACKET
+TRAVELS BETWEEN TWO HOSTS
+
+PC → SWITCH → ROUTER → SWITCH → PC
+```
+
+Target ukuran:
+
+```text
+1200 × 630 px
+```
+
+---
+
+# 15. Hashnode Final Settings
+
+| Field               | Nilai                                                                                                             |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **URL**             | `understanding-network-packet-flow`                                                                               |
+| **SEO Title**       | `How a Network Packet Travels Between Two Hosts`                                                                  |
+| **Description**     | `Learn how a network packet travels between two hosts using IP, ARP, MAC addresses, switches, routers, and ICMP.` |
+| **Primary Keyword** | `network packet flow`                                                                                             |
+| **Tags**            | `networking`, `computer-networks`, `tjkt`, `cisco-packet-tracer`                                                  |
+| **OG Image**        | Canva template                                                                                                    |
+| **Canonical URL**   | Kosong                                                                                                            |
+| **AEO upgrade**     | Tidak diperlukan                                                                                                  |
+
+---
+
+## SEO Checklist Artikel #1
+
+```text
+SEO
+☑ Search intent defined
+☑ H1 defined
+☑ SEO title ≤ 60 characters
+☑ Slug defined
+☑ Meta description ≤ 150 characters
+☑ Primary keyword defined
+☑ Secondary keywords defined
+☑ Semantic entities defined
+☑ Heading structure defined
+☑ FAQ defined
+☑ Internal linking planned
+☑ Image alt text planned
+☑ Image captions planned
+☑ OG image planned
+☑ Canonical strategy defined
+```
+
+**Catatan penting:** SEO ini kita simpan sebagai **spesifikasi Artikel #1**, bukan dimasukkan ke `PROJECT_CONTEXT_TJKT.md`. `PROJECT_CONTEXT` hanya menyimpan aturan umum; dokumen artikel #1 menyimpan implementasi SEO spesifiknya.
