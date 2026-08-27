@@ -1,5 +1,4 @@
 
-````markdown
 # Strategi Blog IT — PKL TJKT
 
 > Dokumen acuan utama untuk membangun blog/artikel IT sebagai bagian dari PKL TJKT sekaligus membangun portofolio dan aset konten jangka panjang.
