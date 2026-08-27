@@ -1,4 +1,3 @@
-Siap. Berikut versi **`README.md`** yang sudah diperbarui untuk keputusan **Medium + GitHub**, dan bisa langsung kamu copy ke repository GitHub.
 
 ````markdown
 # Strategi Blog IT — PKL TJKT
@@ -19,35 +18,35 @@ Proyek ini tidak dibuat hanya untuk memenuhi tugas sekolah.
 
 Tugas PKL digunakan sebagai titik awal untuk membangun **knowledge base IT berbahasa Indonesia** yang dapat berkembang menjadi:
 
-- portofolio IT;
-- dokumentasi pembelajaran;
-- sumber referensi bagi pemula;
-- media untuk membangun reputasi;
-- aset konten jangka panjang;
-- media yang berpotensi dimonetisasi.
+- Portofolio IT
+- Dokumentasi pembelajaran
+- Sumber referensi bagi pemula
+- Media untuk membangun reputasi
+- Aset konten jangka panjang
+- Media yang berpotensi dimonetisasi
 
-Prinsip utama:
+### Prinsip Utama
 
-> **Tugas sekolah → artikel → knowledge base → portofolio → readership → monetisasi**
+> **Tugas sekolah → Artikel → Knowledge Base → Portofolio → Readership → Monetisasi**
 
 ---
 
-# 2. Platform
+## 2. Platform
 
-## Platform Publikasi: Medium
+### Platform Publikasi: Medium
 
 Artikel akan dipublikasikan menggunakan **Medium**.
 
-### Alasan memilih Medium
+### Alasan Memilih Medium
 
-- Tidak perlu mengelola hosting.
-- Tidak perlu membuat template website dari awal.
-- Fokus dapat diarahkan pada kualitas tulisan.
-- Tampilan artikel sudah cukup profesional.
-- Mendukung gambar, heading, code block, quote, list, dan link.
-- Cocok untuk membangun portofolio tulisan.
-- Artikel dapat dibagikan dengan mudah.
-- Memiliki ekosistem pembaca sendiri.
+- Tidak perlu mengelola hosting
+- Tidak perlu membuat template website dari awal
+- Fokus dapat diarahkan pada kualitas tulisan
+- Tampilan artikel sudah profesional
+- Mendukung gambar, heading, code block, quote, list, dan link
+- Cocok untuk membangun portofolio tulisan
+- Artikel mudah dibagikan
+- Memiliki ekosistem pembaca sendiri
 
 ### GitHub sebagai Source of Truth
 
@@ -70,18 +69,18 @@ GitHub
    Portfolio / Readers
 ````
 
-Keuntungan:
+### Keuntungan
 
-* artikel memiliki backup;
-* mudah diedit;
-* mudah digunakan bersama AI;
-* mudah dipindahkan ke platform lain;
-* histori perubahan dapat disimpan;
-* struktur konten lebih terorganisir.
+* Artikel memiliki backup
+* Mudah diedit
+* Mudah digunakan bersama AI
+* Mudah dipindahkan ke platform lain
+* Histori perubahan dapat disimpan
+* Struktur konten lebih terorganisir
 
 ---
 
-# 3. Positioning
+# 3. Positioning Blog
 
 Blog tidak diposisikan hanya sebagai:
 
@@ -127,20 +126,29 @@ IT Fundamental
 
 ## Level 1 — Pelajar
 
-Target utama:
+Target:
 
-* siswa SMK TJKT;
-* siswa bidang IT;
-* pemula yang baru belajar Linux;
-* pelajar yang ingin memahami networking dan server.
+* Siswa SMK TJKT
+* Siswa bidang IT
+* Pemula yang baru belajar Linux
+* Pelajar yang ingin memahami networking dan server
 
 Kebutuhan:
 
-* bahasa sederhana;
-* contoh nyata;
-* command;
-* screenshot;
-* langkah praktik.
+* Bahasa sederhana
+* Contoh nyata
+* Command
+* Screenshot
+* Langkah praktik
+
+Contoh pencarian:
+
+```text
+perintah dasar Linux
+cara menggunakan Linux
+cara setting IP
+apa itu subnetting
+```
 
 ---
 
@@ -148,16 +156,25 @@ Kebutuhan:
 
 Karakteristik:
 
-* sudah mengenal komputer;
-* mulai belajar Linux/server;
-* belum memahami administrasi sistem secara mendalam.
+* Sudah mengenal komputer
+* Mulai belajar Linux/server
+* Belum memahami administrasi sistem secara mendalam
 
 Kebutuhan:
 
-* tutorial step-by-step;
-* contoh;
-* troubleshooting;
-* penjelasan error.
+* Tutorial step-by-step
+* Contoh
+* Troubleshooting
+* Penjelasan error
+
+Contoh pencarian:
+
+```text
+cara membuat user Linux
+cara connect SSH
+permission denied Linux
+cara cek disk Linux
+```
 
 ---
 
@@ -165,9 +182,9 @@ Kebutuhan:
 
 Karakteristik:
 
-* sudah mengenal istilah teknis;
-* mencari solusi praktis;
-* membutuhkan referensi command dan konfigurasi.
+* Sudah mengenal istilah teknis
+* Mencari solusi praktis
+* Membutuhkan referensi command dan konfigurasi
 
 Contoh pencarian:
 
@@ -189,13 +206,13 @@ Format yang disukai:
 
 Topik:
 
-* server;
-* networking;
-* monitoring;
-* log;
-* service;
-* deployment;
-* troubleshooting.
+* Server
+* Networking
+* Monitoring
+* Log
+* Service
+* Deployment
+* Troubleshooting
 
 Target ini merupakan target jangka panjang.
 
@@ -211,21 +228,21 @@ Bahasa Indonesia digunakan karena target utama adalah pembaca Indonesia.
 
 Namun, terminologi teknis tetap menggunakan istilah yang umum digunakan di industri IT.
 
-### Contoh istilah
+### Contoh Istilah
 
-* server
-* client
-* command
-* terminal
-* filesystem
-* permission
-* process
-* service
-* network
-* IP address
-* troubleshooting
-* deployment
-* monitoring
+* Server
+* Client
+* Command
+* Terminal
+* Filesystem
+* Permission
+* Process
+* Service
+* Network
+* IP Address
+* Troubleshooting
+* Deployment
+* Monitoring
 
 Jangan menerjemahkan istilah teknis secara paksa jika istilah Inggris lebih umum digunakan.
 
@@ -235,17 +252,17 @@ Jangan menerjemahkan istilah teknis secara paksa jika istilah Inggris lebih umum
 
 Karakter tulisan:
 
-* teknis;
-* jelas;
-* natural;
-* praktis;
-* beginner-friendly;
-* tidak terlalu akademis;
-* tidak terlalu slang;
-* tidak bertele-tele;
-* akurat secara teknis.
+* Teknis
+* Jelas
+* Natural
+* Praktis
+* Beginner-friendly
+* Tidak terlalu akademis
+* Tidak terlalu slang
+* Tidak bertele-tele
+* Akurat secara teknis
 
-Target:
+### Target Gaya
 
 > **70% mudah dipahami pemula + 30% terminologi teknis**
 
@@ -257,7 +274,7 @@ Contoh:
 
 # 8. Prinsip Penulisan
 
-Artikel harus menjawab:
+Setiap artikel harus menjawab:
 
 1. Apa yang ingin dicari pembaca?
 2. Siapa pembacanya?
@@ -268,7 +285,7 @@ Artikel harus menjawab:
 7. Apa kesalahan yang mungkin terjadi?
 8. Apa solusi jika terjadi error?
 
-Prinsip utama:
+### Prinsip Utama
 
 > **Jangan hanya menjelaskan apa. Jelaskan juga bagaimana dan kapan digunakan.**
 
@@ -388,11 +405,11 @@ df -h
 
 Penjelasan harus mencakup:
 
-* apa fungsi `df`;
-* apa fungsi option `-h`;
-* contoh penggunaan;
-* bagaimana membaca output;
-* kapan command berguna.
+* Apa fungsi `df`
+* Apa fungsi option `-h`
+* Contoh penggunaan
+* Cara membaca output
+* Kapan command berguna
 
 ---
 
@@ -412,21 +429,21 @@ Screenshot bukan sekadar dekorasi.
 
 > **8–12 screenshot per artikel**
 
-### Tutorial besar
+### Tutorial Besar
 
 > **10–15 screenshot**, disesuaikan dengan kebutuhan.
 
 Tidak semua command harus memiliki screenshot.
 
-Prioritaskan:
+### Prioritas Screenshot
 
-* environment;
-* command utama;
-* konfigurasi;
-* hasil perubahan;
-* monitoring;
-* troubleshooting;
-* studi kasus.
+* Environment
+* Command utama
+* Konfigurasi
+* Hasil perubahan
+* Monitoring
+* Troubleshooting
+* Studi kasus
 
 ---
 
@@ -434,22 +451,22 @@ Prioritaskan:
 
 Screenshot harus:
 
-* jelas;
-* cukup besar;
-* command dapat dibaca;
-* output dapat dibaca;
-* tidak terpotong;
-* memiliki konteks;
-* menunjukkan praktik nyata.
+* Jelas
+* Cukup besar
+* Command dapat dibaca
+* Output dapat dibaca
+* Tidak terpotong
+* Memiliki konteks
+* Menunjukkan praktik nyata
 
-Jangan menampilkan:
+### Jangan Menampilkan
 
-* password;
-* API key;
-* token;
-* private key;
-* data pribadi;
-* informasi sensitif.
+* Password
+* API key
+* Token
+* Private key
+* Data pribadi
+* Informasi sensitif
 
 ---
 
@@ -469,9 +486,36 @@ Caption harus menjelaskan **apa yang sedang ditunjukkan**, bukan hanya "Screensh
 
 ---
 
-# 14. SEO
+# 14. Panjang Artikel
+
+Tidak ada jumlah kata yang wajib.
+
+Kualitas dan search intent lebih penting daripada word count.
+
+| Jenis Artikel  |           Target |
+| -------------- | ---------------: |
+| Artikel kecil  |   800–1.200 kata |
+| Artikel normal | 1.500–2.500 kata |
+| Tutorial utama | 2.500–4.000 kata |
+| Tutorial besar |      4.000+ kata |
+
+Untuk artikel besar seperti **Perintah Dasar Linux**, target awal:
+
+> **3.000–4.500 kata**
+
+selama seluruh materi relevan.
+
+> Lebih baik artikel 3.000 kata yang berguna daripada 5.000 kata yang penuh pengulangan.
+
+---
+
+# 15. SEO Strategy
 
 SEO tetap diperhatikan, tetapi bukan satu-satunya sumber traffic.
+
+Fokus:
+
+> **Search Intent + Content Quality + Structure + Topical Coverage + Internal Linking**
 
 Strategi:
 
@@ -489,15 +533,15 @@ Internal / External Links
 Search Visibility
 ```
 
-Karena platform menggunakan Medium, fokus SEO tidak hanya pada Google tetapi juga pada **keterbacaan dan relevansi bagi pembaca Medium**.
+Karena menggunakan Medium, SEO bukan satu-satunya sumber traffic.
 
 ---
 
-# 15. Keyword Strategy
+# 16. Keyword Strategy
 
 Setiap artikel memiliki:
 
-### Primary Keyword
+## Primary Keyword
 
 Satu keyword utama.
 
@@ -507,7 +551,7 @@ Contoh:
 perintah dasar Linux
 ```
 
-### Secondary Keywords
+## Secondary Keywords
 
 Contoh:
 
@@ -522,13 +566,13 @@ administrasi server Linux
 
 Keyword harus digunakan secara natural.
 
-Hindari:
+### Hindari
 
-> keyword stuffing
+> Keyword stuffing
 
 ---
 
-# 16. Search Intent
+# 17. Search Intent
 
 Sebelum menulis artikel, tentukan search intent.
 
@@ -585,7 +629,7 @@ Artikel harus mengikuti intent utama.
 
 ---
 
-# 17. Content Cluster
+# 18. Content Cluster
 
 ## Linux
 
@@ -644,7 +688,7 @@ Troubleshooting
 
 ---
 
-# 18. Internal Linking
+# 19. Internal Linking
 
 Artikel harus saling terhubung jika memiliki hubungan topik.
 
@@ -668,16 +712,16 @@ Linux Server
 Troubleshooting Server
 ```
 
-Tujuan:
+### Tujuan
 
-* membantu pembaca menemukan artikel terkait;
-* membangun struktur knowledge base;
-* meningkatkan navigasi;
-* memperkuat topical coverage.
+* Membantu pembaca menemukan artikel terkait
+* Membangun struktur knowledge base
+* Meningkatkan navigasi
+* Memperkuat topical coverage
 
 ---
 
-# 19. Jenis Artikel Prioritas
+# 20. Jenis Artikel Prioritas
 
 Prioritas konten:
 
@@ -705,9 +749,9 @@ Artikel definisi tetap dibuat jika diperlukan, tetapi tidak menjadi satu-satunya
 
 ---
 
-# 20. Strategi Traffic
+# 21. Strategi Traffic
 
-Karena menggunakan Medium, traffic berasal dari beberapa sumber.
+Karena menggunakan Medium, traffic berasal dari beberapa sumber:
 
 ```text
                 ┌── Google Search
@@ -721,17 +765,17 @@ Medium ─────────┼── Medium Readers
 
 Prioritas:
 
-1. kualitas artikel;
-2. search intent;
-3. judul yang jelas;
-4. readability;
-5. konsistensi;
-6. distribusi artikel;
-7. internal linking.
+1. Kualitas artikel
+2. Search intent
+3. Judul yang jelas
+4. Readability
+5. Konsistensi
+6. Distribusi artikel
+7. Internal linking
 
 ---
 
-# 21. Monetisasi
+# 22. Monetisasi
 
 Monetisasi dilakukan bertahap.
 
@@ -739,35 +783,35 @@ Monetisasi dilakukan bertahap.
 
 Fokus:
 
-* artikel;
-* kualitas;
-* consistency;
-* readership;
-* portfolio.
+* Artikel
+* Kualitas
+* Konsistensi
+* Readership
+* Portfolio
 
 ## Tahap 2 — Audience
 
 Fokus:
 
-* meningkatkan pembaca;
-* mengidentifikasi artikel populer;
-* memahami topik yang memiliki demand.
+* Meningkatkan pembaca
+* Mengidentifikasi artikel populer
+* Memahami topik yang memiliki demand
 
 ## Tahap 3 — Monetization
 
 Potensi:
 
-* program monetisasi platform jika memenuhi syarat;
-* affiliate;
-* digital product;
-* jasa;
-* sponsorship yang relevan.
+* Program monetisasi platform jika memenuhi syarat
+* Affiliate
+* Digital product
+* Jasa
+* Sponsorship yang relevan
 
 Monetisasi harus mengikuti aturan platform yang berlaku.
 
 ---
 
-# 22. Prinsip Monetisasi
+# 23. Prinsip Monetisasi
 
 Urutan prioritas:
 
@@ -801,7 +845,7 @@ Pembaca tidak percaya
 
 ---
 
-# 23. GitHub Repository Structure
+# 24. Struktur GitHub Repository
 
 Struktur repository yang disarankan:
 
@@ -837,7 +881,7 @@ blog-it/
 
 ---
 
-# 24. Workflow Artikel
+# 25. Workflow Artikel
 
 Setiap artikel mengikuti workflow:
 
@@ -877,7 +921,7 @@ Setiap artikel mengikuti workflow:
 
 ---
 
-# 25. Checklist Sebelum Publish
+# 26. Checklist Sebelum Publish
 
 ## Content
 
@@ -935,7 +979,7 @@ Setiap artikel mengikuti workflow:
 
 ---
 
-# 26. Editorial Checklist
+# 27. Editorial Checklist
 
 Sebelum artikel dianggap selesai, tanyakan:
 
@@ -952,7 +996,7 @@ Sebelum artikel dianggap selesai, tanyakan:
 
 ---
 
-# 27. Artikel Pertama
+# 28. Artikel Pertama
 
 ## Judul
 
@@ -960,28 +1004,28 @@ Sebelum artikel dianggap selesai, tanyakan:
 
 Artikel pertama akan menjadi **master template** untuk artikel berikutnya.
 
-### Materi yang direncanakan
+### Materi yang Direncanakan
 
-* informasi sistem;
-* navigasi filesystem;
-* manajemen file;
-* membaca file;
-* user dan group;
-* permission;
-* process;
-* service;
-* monitoring;
-* networking;
-* storage;
-* package management;
-* archive/compression;
-* redirection dan pipe;
-* bantuan Linux;
-* praktik administrasi server.
+* Informasi sistem
+* Navigasi filesystem
+* Manajemen file
+* Membaca file
+* User dan group
+* Permission
+* Process
+* Service
+* Monitoring
+* Networking
+* Storage
+* Package management
+* Archive/compression
+* Redirection dan pipe
+* Bantuan Linux
+* Praktik administrasi server
 
 ---
 
-# 28. Roadmap Konten
+# 29. Roadmap Konten
 
 ```text
 PERINTAH DASAR LINUX
@@ -1009,7 +1053,7 @@ SERVER ADMINISTRATION
 TROUBLESHOOTING
 ```
 
-Kemudian berkembang ke:
+Kemudian dapat berkembang ke:
 
 ```text
 Linux
@@ -1025,7 +1069,7 @@ Pengembangan dilakukan berdasarkan kemampuan, pengalaman, dan demand pembaca.
 
 ---
 
-# 29. Prinsip Akhir
+# 30. Prinsip Akhir
 
 Blog ini dibangun dengan mindset:
 
@@ -1037,7 +1081,7 @@ Bukan:
 
 Setiap artikel harus mempunyai nilai yang tetap berguna bagi pembaca setelah tugas sekolah selesai.
 
-### Target Akhir
+## Target Akhir
 
 > **Membangun knowledge base IT berbahasa Indonesia yang praktis, akurat, beginner-friendly, memiliki nilai portofolio, dan memiliki peluang untuk berkembang menjadi aset yang dapat dimonetisasi.**
 
@@ -1045,13 +1089,18 @@ Setiap artikel harus mempunyai nilai yang tetap berguna bagi pembaca setelah tug
 
 ## Status Proyek
 
-**Platform:** Medium
-**Repository:** GitHub
-**Bahasa:** Indonesia
-**Niche:** Linux / Networking / Server / Troubleshooting
-**Target:** Pelajar → Pemula → Mahasiswa → Junior IT
-**Artikel pertama:** Perintah Dasar Linux
-**Status:** Perencanaan
+| Komponen        | Status                                        |
+| --------------- | --------------------------------------------- |
+| Platform        | Medium                                        |
+| Repository      | GitHub                                        |
+| Bahasa          | Indonesia                                     |
+| Niche           | Linux / Networking / Server / Troubleshooting |
+| Target          | Pelajar → Pemula → Mahasiswa → Junior IT      |
+| Artikel Pertama | Perintah Dasar Linux                          |
+| Status          | Perencanaan                                   |
 
 ```
+
+**Nama file:** `README.md`  
+**Lokasi:** root repository GitHub kamu.
 ```
