@@ -1,0 +1,1051 @@
+
+
+Ketika pertama kali login ke sebuah Debian Server, kita mungkin hanya melihat terminal kosong dengan sebuah prompt. Tidak ada tombol untuk membuka folder, melihat kapasitas disk, atau memeriksa program yang sedang berjalan.
+
+Sebagian besar pekerjaan tersebut dilakukan melalui **command**.
+
+Dengan beberapa command dasar, kita bisa mengetahui siapa user yang sedang digunakan, server apa yang sedang kita akses, berapa lama server telah berjalan, bagaimana kondisi storage, process apa yang aktif, hingga bagaimana kondisi network.
+
+Pada artikel ini, saya akan mencoba beberapa **perintah dasar Linux menggunakan Debian Server**. Fokusnya bukan menghafalkan sebanyak mungkin command, tetapi memahami **apa yang ingin kita cari, command apa yang digunakan, dan bagaimana membaca hasilnya**.
+
+---
+
+## Apa yang Akan Dipelajari?
+
+Dalam praktik ini kita akan mempelajari:
+
+* Cara memahami struktur command Linux.
+* Memeriksa informasi dasar Debian Server.
+* Berpindah dan menjelajahi filesystem.
+* Membuat dan mengelola file.
+* Membaca file.
+* Mengenal user dan group.
+* Memahami dasar file permission.
+* Melihat process yang sedang berjalan.
+* Memeriksa penggunaan memory dan storage.
+* Memeriksa network interface dan listening port.
+* Menggabungkan beberapa command menggunakan pipe dan redirection.
+* Melakukan pemeriksaan awal sebuah server.
+
+---
+
+## Sebelum Memulai
+
+Praktik ini menggunakan:
+
+* **Debian Server**
+* **Bash**
+* User Linux
+* Terminal
+* SSH jika server diakses dari komputer lain
+
+Untuk memastikan sistem yang digunakan, jalankan:
+
+```bash
+cat /etc/os-release
+```
+
+Command tersebut akan menampilkan informasi mengenai distribusi Linux dan versinya.
+
+**[SCREENSHOT 1 — Informasi Debian Server]**
+
+> **Catatan:** Output dapat berbeda tergantung versi Debian dan konfigurasi sistem.
+
+---
+
+## Memahami Struktur Command Linux
+
+Sebelum masuk ke berbagai command, kita perlu memahami bentuk dasar sebuah command.
+
+Secara umum:
+
+```text
+command [option] [argument]
+```
+
+Contohnya:
+
+```bash
+ls -lah /var/log
+```
+
+Pada command tersebut:
+
+* `ls` adalah command.
+* `-lah` merupakan option.
+* `/var/log` merupakan argument atau target directory.
+
+Namun, tidak semua command membutuhkan option dan argument.
+
+Contohnya:
+
+```bash
+pwd
+```
+
+Command tersebut dapat langsung digunakan untuk mengetahui directory tempat kita berada.
+
+Konsep sederhana ini akan terus digunakan ketika kita menjalankan command berikutnya.
+
+---
+
+# 1. Mengenali Server yang Sedang Digunakan
+
+Bayangkan kita baru saja login ke sebuah server.
+
+Sebelum melakukan konfigurasi apa pun, ada beberapa informasi dasar yang sebaiknya kita ketahui.
+
+### Mengetahui User Aktif
+
+Gunakan:
+
+```bash
+whoami
+```
+
+Command ini menunjukkan user yang sedang digunakan oleh terminal.
+
+Hal ini penting terutama ketika kita bekerja dengan beberapa user atau berpindah privilege menggunakan `sudo`.
+
+---
+
+### Mengetahui Hostname
+
+Gunakan:
+
+```bash
+hostname
+```
+
+Hostname merupakan nama yang digunakan untuk mengidentifikasi sebuah sistem.
+
+Pada lingkungan yang memiliki beberapa server, informasi ini membantu kita memastikan bahwa command dijalankan pada server yang benar.
+
+---
+
+### Mengetahui Informasi Kernel
+
+Gunakan:
+
+```bash
+uname -a
+```
+
+Option `-a` meminta `uname` menampilkan informasi sistem yang tersedia.
+
+Output dapat memberikan informasi seperti:
+
+* kernel name,
+* hostname,
+* kernel release,
+* kernel version,
+* dan arsitektur sistem.
+
+---
+
+### Mengetahui Uptime
+
+Gunakan:
+
+```bash
+uptime
+```
+
+Command ini memberikan informasi mengenai berapa lama sistem telah berjalan dan load average.
+
+Load average dapat digunakan sebagai salah satu indikator untuk melihat beban sistem, tetapi nilainya harus dibaca bersama informasi CPU, process, dan resource lainnya.
+
+---
+
+### Memeriksa Beberapa Informasi Sekaligus
+
+Keempat command tersebut dapat dijalankan berurutan:
+
+```bash
+whoami
+hostname
+uname -a
+uptime
+```
+
+**[SCREENSHOT 2 — Pemeriksaan awal user, hostname, kernel, dan uptime]**
+
+Dari pemeriksaan sederhana ini kita sudah mendapatkan gambaran awal mengenai identitas server dan kondisi dasarnya.
+
+---
+
+# 2. Menjelajahi Filesystem
+
+Setelah mengetahui server yang sedang digunakan, langkah berikutnya adalah memahami posisi kita di dalam filesystem.
+
+Linux menggunakan struktur filesystem berbentuk hierarki. Karena itu, kita perlu mengetahui **di mana kita berada dan apa yang ada di dalam directory tersebut**.
+
+## Mengetahui Lokasi Saat Ini
+
+Gunakan:
+
+```bash
+pwd
+```
+
+`pwd` merupakan singkatan dari **Print Working Directory**.
+
+Contoh:
+
+```text
+/home/user
+```
+
+Artinya terminal saat ini berada di directory `/home/user`.
+
+---
+
+## Melihat Isi Directory
+
+Gunakan:
+
+```bash
+ls
+```
+
+Untuk mendapatkan informasi yang lebih lengkap:
+
+```bash
+ls -lah
+```
+
+Option tersebut membantu kita melihat informasi seperti:
+
+* permission,
+* owner,
+* group,
+* ukuran file,
+* waktu modifikasi,
+* file dan directory tersembunyi.
+
+---
+
+## Berpindah Directory
+
+Gunakan:
+
+```bash
+cd /var/log
+```
+
+Kemudian periksa lokasi:
+
+```bash
+pwd
+```
+
+Kita juga dapat kembali ke home directory menggunakan:
+
+```bash
+cd ~
+```
+
+atau:
+
+```bash
+cd
+```
+
+Kombinasi sederhana antara `pwd`, `ls`, dan `cd` merupakan dasar navigasi filesystem Linux.
+
+**[SCREENSHOT 3 — Navigasi filesystem menggunakan pwd, ls, dan cd]**
+
+---
+
+# 3. Membuat dan Mengelola File
+
+Sekarang kita akan mencoba membuat beberapa file untuk latihan.
+
+Sebaiknya gunakan directory khusus di dalam home directory agar tidak mengubah file sistem.
+
+Buat directory:
+
+```bash
+mkdir latihan-linux
+```
+
+Masuk ke directory tersebut:
+
+```bash
+cd latihan-linux
+```
+
+Kemudian buat file kosong:
+
+```bash
+touch latihan.txt
+```
+
+Periksa hasilnya:
+
+```bash
+ls -lah
+```
+
+---
+
+## Menyalin File dengan `cp`
+
+Buat salinan:
+
+```bash
+cp latihan.txt latihan-copy.txt
+```
+
+Kemudian:
+
+```bash
+ls -lah
+```
+
+Sekarang seharusnya terdapat dua file.
+
+---
+
+## Mengganti Nama File dengan `mv`
+
+Gunakan:
+
+```bash
+mv latihan-copy.txt hasil.txt
+```
+
+Command `mv` dapat digunakan untuk memindahkan file sekaligus mengganti namanya.
+
+Periksa:
+
+```bash
+ls -lah
+```
+
+---
+
+## Menghapus File dengan `rm`
+
+Jika file tersebut hanya digunakan untuk latihan, kita dapat menghapusnya:
+
+```bash
+rm hasil.txt
+```
+
+Kemudian:
+
+```bash
+ls -lah
+```
+
+### Perhatikan penggunaan `rm`
+
+`rm` perlu digunakan dengan hati-hati karena file yang dihapus melalui command line biasanya tidak masuk ke recycle bin seperti pada graphical interface.
+
+Biasakan memastikan target sebelum menjalankan command yang bersifat destruktif.
+
+**[SCREENSHOT 4 — Membuat, menyalin, mengganti nama, dan menghapus file]**
+
+---
+
+# 4. Membaca File
+
+Dalam administrasi server, kita sering perlu membaca file konfigurasi, informasi sistem, atau log.
+
+Beberapa command yang umum digunakan adalah `cat`, `less`, `head`, dan `tail`.
+
+## `cat`
+
+Untuk menampilkan isi file:
+
+```bash
+cat /etc/hostname
+```
+
+Command ini cocok digunakan untuk file yang ukurannya relatif kecil.
+
+---
+
+## `less`
+
+Untuk membaca file yang lebih panjang:
+
+```bash
+less /etc/passwd
+```
+
+`less` memungkinkan kita membaca file secara bertahap.
+
+Untuk keluar:
+
+```text
+q
+```
+
+---
+
+## `head`
+
+Untuk melihat bagian awal file:
+
+```bash
+head /etc/passwd
+```
+
+Kita juga dapat menentukan jumlah baris:
+
+```bash
+head -n 5 /etc/passwd
+```
+
+---
+
+## `tail`
+
+Untuk melihat bagian akhir:
+
+```bash
+tail /etc/passwd
+```
+
+`tail` sering berguna ketika kita memeriksa file log karena informasi terbaru sering berada di bagian akhir file.
+
+---
+
+# 5. User, Group, dan Permission
+
+Linux menggunakan konsep **user** dan **group** untuk mengatur identitas serta akses terhadap resource.
+
+## Melihat Identitas User
+
+Gunakan:
+
+```bash
+id
+```
+
+Output dapat menunjukkan:
+
+* UID atau User ID,
+* GID atau Group ID,
+* group yang diikuti user.
+
+Informasi ini sering berguna ketika melakukan troubleshooting permission.
+
+---
+
+## Melihat User yang Sedang Login
+
+Gunakan:
+
+```bash
+who
+```
+
+Command tersebut menampilkan sesi user yang sedang login ke sistem.
+
+---
+
+## Memahami Permission
+
+Jalankan:
+
+```bash
+ls -l
+```
+
+Salah satu bagian output mungkin terlihat seperti:
+
+```text
+-rw-r--r--
+```
+
+Permission tersebut terdiri dari tiga kelompok utama:
+
+```text
+owner   group   others
+ rw-     r--     r--
+```
+
+Linux memiliki tiga permission dasar:
+
+```text
+r = read
+w = write
+x = execute
+```
+
+Sehingga:
+
+```text
+-rw-r--r--
+```
+
+dapat dibaca secara sederhana sebagai:
+
+```text
+owner  → read + write
+group  → read
+others → read
+```
+
+Pemahaman permission sangat penting dalam Linux karena banyak masalah administrasi berkaitan dengan hak akses file dan directory.
+
+**[SCREENSHOT 5 — User identity dan file permission]**
+
+---
+
+# 6. Melihat Process yang Sedang Berjalan
+
+Sebuah program yang sedang berjalan disebut **process**.
+
+Untuk melihat process pada terminal:
+
+```bash
+ps
+```
+
+Untuk melihat informasi process yang lebih lengkap:
+
+```bash
+ps aux
+```
+
+Output dapat berisi informasi seperti:
+
+* user,
+* PID,
+* CPU usage,
+* memory usage,
+* waktu process,
+* command.
+
+## Apa Itu PID?
+
+PID atau **Process ID** merupakan identitas numerik sebuah process.
+
+PID dapat digunakan untuk membedakan satu process dengan process lainnya ketika melakukan monitoring atau troubleshooting.
+
+---
+
+## Monitoring dengan `top`
+
+Gunakan:
+
+```bash
+top
+```
+
+Berbeda dengan `ps`, `top` memberikan tampilan monitoring yang diperbarui secara berkala.
+
+Kita dapat melihat berbagai informasi seperti:
+
+* CPU,
+* memory,
+* load average,
+* jumlah process,
+* process yang sedang berjalan.
+
+Untuk keluar dari `top`, tekan:
+
+```text
+q
+```
+
+**[SCREENSHOT 6 — Process dan monitoring menggunakan ps/top]**
+
+---
+
+# 7. Memeriksa Resource Server
+
+Selain process, kita perlu mengetahui kondisi resource server.
+
+Dua resource dasar yang sering diperiksa adalah memory dan storage.
+
+## Memory dengan `free`
+
+Gunakan:
+
+```bash
+free -h
+```
+
+Option `-h` membuat ukuran ditampilkan dalam format yang lebih mudah dibaca.
+
+Dari output tersebut kita dapat melihat informasi mengenai memory dan swap.
+
+---
+
+## Storage dengan `df`
+
+Gunakan:
+
+```bash
+df -h
+```
+
+Command ini menunjukkan penggunaan filesystem.
+
+Informasi penting yang dapat diperhatikan:
+
+* Size,
+* Used,
+* Available,
+* Use%,
+* Mounted on.
+
+Contohnya, jika `Use%` sebuah filesystem sudah sangat tinggi, kita perlu melakukan pemeriksaan lebih lanjut.
+
+---
+
+## Mengetahui Directory yang Menggunakan Banyak Storage
+
+Kita dapat menggunakan:
+
+```bash
+du -sh /var/log
+```
+
+Command tersebut memberikan ukuran total directory `/var/log`.
+
+Berbeda dengan `df`, yang melihat penggunaan filesystem, `du` lebih berfokus pada penggunaan ruang oleh file dan directory.
+
+---
+
+## Melihat Block Device
+
+Gunakan:
+
+```bash
+lsblk
+```
+
+Command ini membantu melihat block device seperti disk dan partition yang tersedia.
+
+**[SCREENSHOT 7 — Memory, filesystem, dan storage]**
+
+---
+
+# 8. Memeriksa Network
+
+Server hampir selalu berhubungan dengan network.
+
+Ketika sebuah service tidak dapat diakses, pemeriksaan network sering menjadi salah satu langkah troubleshooting.
+
+## Melihat Network Interface
+
+Gunakan:
+
+```bash
+ip addr
+```
+
+Output dapat menunjukkan:
+
+* nama interface,
+* status interface,
+* IPv4 address,
+* IPv6 address.
+
+---
+
+## Menguji Konektivitas
+
+Kita dapat mencoba:
+
+```bash
+ping -c 4 8.8.8.8
+```
+
+Option `-c 4` meminta sistem mengirim empat paket.
+
+Jika mendapatkan response, terdapat konektivitas menuju alamat tujuan tersebut.
+
+Namun, kegagalan `ping` tidak selalu berarti jaringan bermasalah. Host tujuan atau firewall dapat dikonfigurasi untuk tidak merespons ICMP.
+
+---
+
+## Melihat Listening Port
+
+Gunakan:
+
+```bash
+ss -tuln
+```
+
+Command tersebut dapat membantu melihat socket dan port yang sedang listening.
+
+Ini berguna ketika kita ingin memastikan apakah sebuah service sedang membuka port tertentu.
+
+Misalnya, jika sebuah web server seharusnya listening pada port tertentu tetapi tidak terlihat pada output `ss`, kondisi tersebut dapat menjadi petunjuk untuk melakukan troubleshooting lebih lanjut.
+
+**[SCREENSHOT 8 — Network interface dan listening port]**
+
+---
+
+# 9. Menggabungkan Command dengan Pipe dan Redirection
+
+Salah satu kekuatan command line Linux adalah kemampuan menggabungkan command.
+
+## Redirection `>`
+
+Contoh:
+
+```bash
+echo "Linux" > contoh.txt
+```
+
+Output dari `echo` diarahkan ke file `contoh.txt`.
+
+Jika file belum ada, file akan dibuat.
+
+---
+
+## Append `>>`
+
+Gunakan:
+
+```bash
+echo "Debian" >> contoh.txt
+```
+
+Berbeda dengan `>`, operator `>>` menambahkan data ke akhir file.
+
+---
+
+## Pipe `|`
+
+Pipe digunakan untuk meneruskan output sebuah command menjadi input command berikutnya.
+
+Contoh:
+
+```bash
+ps aux | grep ssh
+```
+
+Prosesnya:
+
+```text
+ps aux
+   ↓
+menghasilkan daftar process
+   ↓
+|
+   ↓
+grep ssh
+   ↓
+mencari baris yang mengandung "ssh"
+```
+
+Konsep pipe sangat penting karena command sederhana dapat digabungkan menjadi workflow yang lebih kompleks.
+
+---
+
+# 10. Mencari Bantuan Saat Lupa Command
+
+Tidak mungkin menghafalkan semua command Linux beserta seluruh option-nya.
+
+Karena itu, kemampuan membaca dokumentasi sama pentingnya dengan mengetahui command itu sendiri.
+
+## `--help`
+
+Banyak command menyediakan bantuan singkat:
+
+```bash
+ls --help
+```
+
+---
+
+## `man`
+
+Linux juga menyediakan manual page.
+
+Contoh:
+
+```bash
+man ls
+```
+
+Manual page biasanya berisi:
+
+* deskripsi command,
+* syntax,
+* option,
+* argument,
+* dan informasi penggunaan.
+
+Untuk keluar:
+
+```text
+q
+```
+
+Biasakan membaca `man` ketika tidak yakin terhadap sebuah option daripada sekadar menyalin command dari internet.
+
+---
+
+# Initial Server Check
+
+Sekarang kita sudah memiliki beberapa command dasar untuk membaca kondisi server.
+
+Bayangkan kita baru saja mendapatkan akses ke sebuah Debian Server.
+
+Pertanyaannya:
+
+> **Apa saja informasi dasar yang perlu diperiksa sebelum melakukan pekerjaan lebih lanjut?**
+
+Kita dapat melakukan pemeriksaan awal menggunakan:
+
+```bash
+whoami
+hostname
+uname -a
+uptime
+free -h
+df -h
+ip addr
+ss -tuln
+```
+
+Command tersebut memberikan gambaran awal mengenai:
+
+| Command    | Informasi                   |
+| ---------- | --------------------------- |
+| `whoami`   | User yang sedang digunakan  |
+| `hostname` | Nama server                 |
+| `uname -a` | Informasi kernel dan sistem |
+| `uptime`   | Uptime dan load average     |
+| `free -h`  | Kondisi memory              |
+| `df -h`    | Penggunaan filesystem       |
+| `ip addr`  | Network interface dan IP    |
+| `ss -tuln` | Listening port              |
+
+**[SCREENSHOT 9 — Initial Server Check]**
+
+Pemeriksaan sederhana ini belum cukup untuk menyatakan bahwa sebuah server benar-benar sehat.
+
+Namun, kita sudah mendapatkan **baseline informasi** yang dapat digunakan untuk menentukan pemeriksaan berikutnya.
+
+Jika ditemukan masalah, kita dapat mempersempit pemeriksaan berdasarkan informasi tersebut.
+
+---
+
+# Dalam Dunia Kerja
+
+Command dasar Linux mungkin terlihat sederhana.
+
+Namun, command tersebut merupakan bagian dari pekerjaan yang lebih besar dalam system administration dan troubleshooting.
+
+Misalnya sebuah server tiba-tiba tidak dapat menjalankan service karena storage penuh.
+
+Administrator dapat melakukan pemeriksaan:
+
+```bash
+df -h
+```
+
+Jika ditemukan filesystem yang hampir penuh, pemeriksaan dapat dilanjutkan:
+
+```bash
+du -sh /var/log
+```
+
+Dari sini kita mulai membangun pola berpikir:
+
+```text
+Ada masalah
+    ↓
+Cari informasi
+    ↓
+Baca output
+    ↓
+Temukan indikasi
+    ↓
+Lakukan pemeriksaan lanjutan
+    ↓
+Tentukan tindakan
+```
+
+Jadi, kemampuan Linux bukan hanya tentang mengingat syntax.
+
+Yang lebih penting adalah **mengetahui informasi apa yang perlu dicari dan bagaimana menginterpretasikan hasilnya**.
+
+---
+
+# Kesalahan yang Sering Dilakukan Pemula
+
+## 1. Menghafalkan command tanpa memahami fungsinya
+
+Tidak perlu menghafalkan semua command sekaligus.
+
+Lebih penting memahami:
+
+> "Masalah apa yang ingin saya periksa?"
+
+Baru kemudian menentukan command yang sesuai.
+
+---
+
+## 2. Menjalankan semuanya sebagai root
+
+User `root` memiliki privilege yang sangat tinggi.
+
+Gunakan user biasa untuk aktivitas normal dan gunakan privilege administrator hanya ketika memang diperlukan.
+
+---
+
+## 3. Tidak memeriksa directory
+
+Sebelum membuat, memindahkan, atau menghapus file, biasakan:
+
+```bash
+pwd
+ls -la
+```
+
+Hal sederhana ini dapat mengurangi risiko melakukan perubahan pada lokasi yang salah.
+
+---
+
+## 4. Menjalankan command yang belum dipahami
+
+Jangan hanya copy-paste command dari internet.
+
+Pahami terlebih dahulu:
+
+* apa fungsinya,
+* option yang digunakan,
+* targetnya,
+* dan perubahan yang mungkin terjadi.
+
+Terutama untuk command yang dapat mengubah atau menghapus sistem.
+
+---
+
+# Tips dan Best Practice
+
+Beberapa kebiasaan yang dapat mulai diterapkan:
+
+1. Gunakan user biasa untuk aktivitas normal.
+2. Periksa lokasi menggunakan `pwd`.
+3. Periksa isi directory menggunakan `ls -la`.
+4. Baca output command, jangan hanya menjalankannya.
+5. Gunakan `man` atau `--help` ketika lupa syntax.
+6. Jangan menjalankan command destruktif tanpa memahami dampaknya.
+7. Biasakan mencatat hasil troubleshooting.
+8. Gunakan environment lab untuk bereksperimen.
+
+---
+
+# Mini Challenge
+
+Sekarang coba lakukan pemeriksaan Debian Server tanpa melihat kembali bagian sebelumnya.
+
+Cari informasi berikut:
+
+1. User yang sedang digunakan.
+2. Hostname server.
+3. Kernel yang digunakan.
+4. Uptime server.
+5. Penggunaan memory.
+6. Penggunaan filesystem.
+7. IP address.
+8. Listening port.
+
+Kemudian coba jawab:
+
+> **Jika storage server hampir penuh, command apa yang akan kamu gunakan untuk mencari directory yang paling banyak menggunakan ruang?**
+
+Petunjuk:
+
+```bash
+du
+```
+
+Tujuan latihan ini bukan menghafalkan command, tetapi melatih proses berpikir ketika melakukan pemeriksaan server.
+
+---
+
+# Hal yang Saya Pelajari
+
+Dari praktik ini, saya mulai memahami bahwa command Linux bukan sekadar syntax yang perlu dihafalkan.
+
+Setiap command digunakan untuk menjawab pertanyaan tertentu mengenai sistem.
+
+Misalnya:
+
+```text
+Siapa saya?
+→ whoami
+
+Server apa yang sedang digunakan?
+→ hostname
+
+Berapa lama server berjalan?
+→ uptime
+
+Apakah storage hampir penuh?
+→ df -h
+
+Process apa yang sedang berjalan?
+→ ps / top
+
+IP address server apa?
+→ ip addr
+
+Port apa yang sedang listening?
+→ ss -tuln
+```
+
+Dengan pola berpikir seperti ini, command menjadi lebih mudah diingat karena kita memahami **alasan mengapa command tersebut digunakan**.
+
+---
+
+# Kesimpulan
+
+Pada artikel ini kita telah mempraktikkan berbagai perintah dasar Linux menggunakan Debian Server.
+
+Kita mulai dari pemeriksaan identitas server, kemudian mempelajari navigasi filesystem, file management, membaca file, user dan permission, process, resource, hingga networking.
+
+Beberapa command yang penting untuk diingat bukan karena harus dihafalkan semuanya, tetapi karena sering digunakan untuk memperoleh informasi dasar mengenai sistem:
+
+```bash
+whoami
+hostname
+uptime
+pwd
+ls
+cd
+df -h
+free -h
+ps
+ip addr
+ss -tuln
+```
+
+Hal terpenting dari belajar Linux adalah memahami hubungan antara **masalah, informasi yang dibutuhkan, command yang digunakan, dan hasil yang diperoleh**.
+
+Setelah memahami fundamental ini, kita dapat melanjutkan ke konsep yang lebih spesifik seperti **Linux File Permission**, **User Management**, **Process Management**, **systemd**, **SSH**, dan **network troubleshooting**.
+
+---
+
+# Artikel Berikutnya
+
+Pada artikel berikutnya kita akan membahas:
+
+**Linux File Permission: Memahami `chmod`, `chown`, User, dan Group**
+
+Kita akan mencoba permission secara langsung dan melihat bagaimana perubahan ownership serta permission memengaruhi akses terhadap file.
+
+---
+
+# Referensi
+
+* Debian Documentation
+* Linux man-pages
+* GNU Coreutils
+* Dokumentasi command Linux terkait
+
+---
